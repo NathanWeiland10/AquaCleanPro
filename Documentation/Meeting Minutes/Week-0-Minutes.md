@@ -13,7 +13,7 @@
 - AquaClean Pro Design:
     - How to design in a way that we can wire the motors?
 
-# Meeting Tuesday, January 9th, 2024
+# Meeting: Tuesday, January 9th, 2024
 ### Time
 - 8:45am - 9:20am
 ### Attendees/Role
