@@ -1,7 +1,9 @@
-.. toctree:: Meeting Minutes
+.. toctree::
+    :caption: Meeting Minutes
     meeting-minutes/week0
 
-.. toctree:: Docs
+.. toctree::
+    :caption: Documentation
     server-config
 
 ###########################################
