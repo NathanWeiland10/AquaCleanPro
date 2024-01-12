@@ -6,7 +6,7 @@ jobs:
   build-docs:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/ethantimpe/aquacleanpro/build-docs
+      image: ghcr.io/ethantimpe/aquacleanpro/build-docs:v1.0.0
       credentials:
         username: ethantimpe
         password: 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
