@@ -1,6 +1,7 @@
 .. toctree::
     :hidden:
     :caption: Meeting Minutes
+    :maxdepth: 2
 
     meeting-minutes/week0
 
