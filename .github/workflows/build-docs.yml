@@ -25,9 +25,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: aquaclean-pro-pdf
-          path: _pdf/simplepdf/*.pdf
+          path: docs/_pdf/simplepdf/*.pdf
       - name: Export HTML
         uses: actions/upload-artifact@v3
         with:
           name: aquaclean-pro-html
-          path: _html/html/*
+          path: docs/_html/html/*
