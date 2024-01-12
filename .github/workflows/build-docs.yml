@@ -9,7 +9,7 @@ jobs:
       image: ghcr.io/ethantimpe/aquacleanpro/build-docs:v1.0.1
       credentials:
         username: ethantimpe
-        password: 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
+        password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
 
     steps:
       - name: Checkout repo
