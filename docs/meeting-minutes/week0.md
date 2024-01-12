@@ -1,6 +1,4 @@
-# Week 0
-
-## Tuesday, January 9th, 2024
+# Tuesday, January 9th, 2024
 ### Time
 - 9:00am - 9:20am
 ### Attendees/Role
@@ -15,7 +13,7 @@
 - AquaClean Pro Design:
     - How to design in a way that we can wire the motors?
 
-## Thursday, January 11th, 2024
+# Thursday, January 11th, 2024
 ### Time
 - 8:45am - 9:20am
 ### Attendees/Role

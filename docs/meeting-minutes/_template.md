@@ -1,6 +1,4 @@
-# Week #
-
-## Day, Date
+# Day, Date
 ### Time
 - ...
 ### Attendees/Role
