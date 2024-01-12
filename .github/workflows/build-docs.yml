@@ -10,8 +10,7 @@ jobs:
       credentials:
         username: ethantimpe
         password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
-    # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    if: ${{ github.event_name == 'push'}}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

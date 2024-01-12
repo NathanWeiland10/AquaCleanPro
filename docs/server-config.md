@@ -1,3 +1,1 @@
 # Server Configuration
-
-test
