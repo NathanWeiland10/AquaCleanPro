@@ -10,7 +10,7 @@ jobs:
       credentials:
         username: ethantimpe
         password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
-
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -28,7 +28,6 @@ jobs:
           path: docs/_pdf/simplepdf/AquaClean-Pro.pdf
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
