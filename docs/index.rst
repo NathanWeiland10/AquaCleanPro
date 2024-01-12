@@ -1,5 +1,4 @@
-.. meta::
-    :github_url: https://github.com/NathanWeiland10/AquaCleanPro
+:github_url: https://github.com/NathanWeiland10/AquaCleanPro
 
 .. toctree::
     :hidden:
