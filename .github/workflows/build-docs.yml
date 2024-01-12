@@ -1,0 +1,33 @@
+name: build-docs
+
+on: [ push ]
+
+jobs:
+  build docs:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/ethantimpe/aquacleanpro/build-docs
+      credentials:
+        username: ethantimpe
+        password: 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
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Build docs
+        run: |
+          cd docs
+          # Uncomment once we have code to autodoc
+          # doxygen Doxyfile
+          sphinx-build -M simplepdf . _pdf
+          sphinx-build -M html . _html
+      - name: Export PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: aquaclean-pro-pdf
+          path: _pdf/simplepdf/*.pdf
+      - name: Export HTML
+        uses: actions/upload-artifact@v3
+        with:
+          name: aquaclean-pro-html
+          path: _html/html/*

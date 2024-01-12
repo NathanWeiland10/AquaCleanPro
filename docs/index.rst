@@ -1,0 +1,2 @@
+.. toctree::
+    server-config
