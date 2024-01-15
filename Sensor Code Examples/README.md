@@ -1,4 +1,4 @@
-## What is this directory for?
+## What is This Directory For?
 This directory provides some code examples of the sensors that will be used by the Aqua Clean Pro as well as some documentation of where to find more information. A majority of these links have been scraped from links posted in an old Discord group chat.
 
 ## Quick References for Components
