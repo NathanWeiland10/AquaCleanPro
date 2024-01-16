@@ -2,34 +2,45 @@
 Server Configuration
 ####################
 
+==========
+Components
+==========
+
++----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
+| Name           | Description                            | DockerHub Image                | Volumes                              | TCP Port Mapping (Public:Private)   |
++================+========================================+================================+======================================+=====================================+
+| PostgreSQL     | Database of choice for storing and     | ``postgres:latest``            | ``pgdata:/var/lib/postgresql/data``  | ``5432:5432``                       |
+|                | retrieving water quality measurements. |                                |                                      |                                     |
++----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
+| pgAdmin4       | Web interface for easily interacting   | ``dpage/pgadmin4:latest``      |                                      | ``4000:80``                         |
+| (Optional)     | with PostgreSQL databases.             |                                |                                      |                                     |
++----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
+| PostgREST      | REST API for interacting with          | ``postgrest/postgrest:latest`` |                                      | ``3000:3000``                       |
+|                | PostgreSQL databases.                  |                                |                                      |                                     |
++----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
+| Grafana        | Web app for creating and viewing data  | ``grafana/grafana-oss:latest`` | ``grafana-storage:/var/lib/grafana`` | ``8000:5432``                       |
+|                | visualizations from database.          |                                |                                      |                                     |
++----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
+
+==============
+Docker-Compose
+==============
+
 The following Docker-Compose file is used to define all the necessary server components:
 
 .. literalinclude:: ../docker/compose.yml
     :language: yaml
     :linenos:
+    :caption:
 
-To initialize the server, run ``docker-compose -f docker/compose.yml up``
+=====
+Usage
+=====
 
-To stop the server, run ``docker-compose -f docker/compose.yml down``
+Run ``docker-compose -f docker/compose.yml up [--detach]`` to initalize all server components.
 
-To stop the server and delete all persistent volumes, run ``docker-compose -f docker/compose.yml down -v``
+- The ``--detach`` option starts the containers in the background and leaves them running.
 
-==========
-Components
-==========
+Run ``docker-compose -f docker/compose.yml down [-v]`` to shut down all server components.
 
-+----------------+--------------------------------+--------------------------------------+----------------+----------------------------------------------------------------------------+
-| Container Name | Image                          | Volumes                              | Port Mapping   | Environment Variables                                                      | 
-+================+================================+======================================+================+============================================================================+
-| postgres       | ``postgres:latest``            | ``pgdata:/var/lib/postgresql/data``  | ``5432:5432``  | | ``POSTGRES_USER``: admin                                                 |
-|                |                                |                                      |                | | ``POSTGRES_PASSWORD``: $POSTGRES_PASSWORD                                |
-+----------------+--------------------------------+--------------------------------------+----------------+----------------------------------------------------------------------------+
-| pgadmin        | ``dpage/pgadmin4:latest``      |                                      | ``4000:80``    | | ``PGADMIN_DEFAULT_EMAIL``: aquaclean@wright.edu                          |
-|                |                                |                                      |                | | ``PGADMIN_DEFAULT_PASSWORD``: $PGADMIN_DEFAULT_PASSWORD                  |
-+----------------+--------------------------------+--------------------------------------+----------------+----------------------------------------------------------------------------+
-| postgrest      | ``postgrest/postgrest:latest`` |                                      | ``3000:3000``  | ``PGRST_DB_URI``: postgres://admin:${POSTGRES_PASSWORD}@192.168.1.100:5432 |
-|                |                                |                                      |                |                                                                            |
-+----------------+--------------------------------+--------------------------------------+----------------+----------------------------------------------------------------------------+
-| grafana        | ``grafana/grafana-oss:latest`` | ``grafana-storage:/var/lib/grafana`` | ``8000:5432``  |                                                                            |
-|                |                                |                                      |                |                                                                            |
-+----------------+--------------------------------+--------------------------------------+----------------+----------------------------------------------------------------------------+
+- The ``-v`` option wipes all persistent volumes (**WARNING**: This deletes all PostgreSQL and Grafana data -- use only when completely resetting server).
