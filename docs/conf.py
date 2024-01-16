@@ -23,7 +23,7 @@ breathe_default_project = "AquaClean Pro"
 
 # HTML theming
 html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_img']
+html_static_path = ['_static']
 html_theme_options = {
     'titles_only': True
 }

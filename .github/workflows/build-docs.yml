@@ -1,20 +1,20 @@
-name: build-docs
+name: docs
 
 on: [ push ]
 
 jobs:
-  build-docs:
+  docs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/ethantimpe/aquacleanpro/build-docs:v1.0.1
       credentials:
         username: ethantimpe
         password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Build docs
+      - name: Build Docs
         run: |
           cd docs
           # Uncomment once we have code to autodoc
@@ -26,8 +26,17 @@ jobs:
         with:
           name: aquaclean-pro-pdf
           path: docs/_pdf/simplepdf/AquaClean-Pro.pdf
+      - name: Export HTML
+        uses: actions/upload-artifact@v3
+        # If not on main, export HTML build to zip
+        if: ${{ github.ref != 'refs/heads/main' }}
+        with:
+          name: aquaclean-pro-html
+          path: docs/_html/*
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        # If push to main, deploy to pages
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
