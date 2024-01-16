@@ -22,17 +22,6 @@ Components
 |                | visualizations from database.          |                                |                                      |                                     |
 +----------------+----------------------------------------+--------------------------------+--------------------------------------+-------------------------------------+
 
-==============
-Docker-Compose
-==============
-
-The following Docker-Compose file is used to define all the necessary server components:
-
-.. literalinclude:: ../docker/compose.yml
-    :language: yaml
-    :linenos:
-    :caption:
-
 =====
 Usage
 =====
@@ -44,3 +33,14 @@ Run ``docker-compose -f docker/compose.yml up [--detach]`` to initalize all serv
 Run ``docker-compose -f docker/compose.yml down [-v]`` to shut down all server components.
 
 - The ``-v`` option wipes all persistent volumes (**WARNING**: This deletes all PostgreSQL and Grafana data -- use only when completely resetting server).
+
+==============
+Docker-Compose
+==============
+
+The following Docker-Compose file is used to define all the necessary server components:
+
+.. literalinclude:: ../docker/compose.yml
+    :language: yaml
+    :linenos:
+    :caption:
