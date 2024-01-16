@@ -46,3 +46,6 @@ html_context = {
                     f'Ethan Heinlein, Thomas McGuff, Nermeen Saleh, Ethan Timpe, Nathaniel Weiland'
 }
 simplepdf_file_name = "AquaClean-Pro.pdf"
+
+def setup(app):
+    app.add_css_file('theme.css')
