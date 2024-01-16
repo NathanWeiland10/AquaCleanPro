@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: aquaclean@wright.edu
+      PGADMIN_DEFAULT_PASSWORD: $PGADMIN_DEFAULT_PASSWORD
+    ports:
+      - 4000:80
+
+  postgrest:
+    image: postgrest/postgrest
+    restart: always
+    environment:
+      PGRST_DB_URI: postgres://admin:${$POSTGRES_PASSWORD}@192.168.1.100:5432
+    ports:
+      - 3000:3000
+
+  grafana:
+    image: grafana/grafana-oss
+    restart: always
+    environment:
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+      - 8000:3000
+ 
+volumes:
+  pgdata:
+  grafana-storage:
