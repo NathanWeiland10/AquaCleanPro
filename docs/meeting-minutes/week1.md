@@ -1,4 +1,5 @@
-# Thursday, January 18th, 2024
+# Week 1
+## Thursday, January 18th, 2024
 ### Time
 - 9:00am - 9:20am
 ### Attendees/Role

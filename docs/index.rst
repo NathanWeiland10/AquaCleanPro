@@ -1,7 +1,7 @@
 .. toctree::
     :hidden:
     :caption: Meeting Minutes
-    :maxdepth: 1
+    :maxdepth: 2
 
     meeting-minutes/week0
     meeting-minutes/week1
