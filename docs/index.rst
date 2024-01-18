@@ -10,6 +10,7 @@
     :caption: Documentation
 
     server-config
+    quick-refs
 
 ###########################################
 Welcome to the AquaClean Pro Documentation!
