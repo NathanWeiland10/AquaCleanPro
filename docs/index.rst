@@ -4,6 +4,7 @@
     :maxdepth: 1
 
     meeting-minutes/week0
+    meeting-minutes/week1
 
 .. toctree::
     :hidden:
