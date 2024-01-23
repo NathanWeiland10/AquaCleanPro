@@ -3,7 +3,7 @@ name: spell-check
 on: [ push ]
 
 jobs:
-  docs:
+  spell-check:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/ethantimpe/aquacleanpro/build-docs:v1.0.2
