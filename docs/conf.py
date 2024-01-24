@@ -24,7 +24,7 @@ breathe_default_project = "AquaClean Pro"
 # HTML theming
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-html_logo = 'logo.png'
+html_logo = '_static/logo.png'
 html_theme_options = {
     'titles_only': False,
     'navigation_depth': 2,
