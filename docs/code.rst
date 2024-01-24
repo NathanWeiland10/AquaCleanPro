@@ -2,5 +2,4 @@
 Code
 ====
 
-.. doxygenfile:: src.ino
-
+.. doxygenindex::
