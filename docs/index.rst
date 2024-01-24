@@ -16,5 +16,5 @@
     meeting-minutes/week1
 
 ###########################################
-Welcome ot the AquaClean Pro Documentation!
+Welcome to the AquaClean Pro Documentation!
 ###########################################
