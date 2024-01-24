@@ -1,5 +1,6 @@
-==================
-Code Documentation
-==================
+====
+Code
+====
 
-.. doxygenindex::
+.. doxygenfile:: src.ino
+
