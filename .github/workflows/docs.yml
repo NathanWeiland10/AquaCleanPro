@@ -17,13 +17,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Spell Check
-        run: codespell
+        run: codespell --write-changes
 
       - name: Build Docs
         run: |
           cd docs
           doxygen Doxyfile
-          ls
           sphinx-build -M html . _html
 
       - name: Export HTML
