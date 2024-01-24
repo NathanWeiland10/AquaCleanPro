@@ -6,3 +6,7 @@ h1 {
     text-decoration: underline;
     font-size: 175%;
 }
+
+.wy-side-nav-search {
+    background-color: white;
+}
