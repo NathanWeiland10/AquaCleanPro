@@ -10,24 +10,22 @@ jobs:
       credentials:
         username: ethantimpe
         password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
+
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Spell Check
         run: codespell
+
       - name: Build Docs
         run: |
           cd docs
-          # Uncomment once we have code to autodoc
-          # doxygen Doxyfile
-          sphinx-build -M simplepdf . _pdf
+          doxygen Doxyfile
+          ls
           sphinx-build -M html . _html
-      - name: Export PDF
-        uses: actions/upload-artifact@v3
-        with:
-          name: aquaclean-pro-pdf
-          path: docs/_pdf/simplepdf/AquaClean-Pro.pdf
+
       - name: Export HTML
         uses: actions/upload-artifact@v3
         # If not on main, export HTML build to zip
@@ -35,6 +33,7 @@ jobs:
         with:
           name: aquaclean-pro-html
           path: docs/_html/html/*
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         # If push to main, deploy to pages
