@@ -3,6 +3,8 @@
     :caption: Documentation
 
     server-config
+    code 
+    changelog
     quick-refs
 
 .. toctree::
