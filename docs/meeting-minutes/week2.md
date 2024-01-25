@@ -12,7 +12,7 @@
 - Using pre-made propellers instead of printing them
     - Adjust the width of the propeller ports from 40mm to 45mm
     - Nathan will send an email to Buck and Billy to include the pre-made propeller in our budget / list of materials
-- Since our parts still have not arrived, we can use some of our own equipment for testing, such as testing with an ESP-32, or use online emulators
+- Since our parts still have not arrived, we can use some of our own equipment for testing, such as testing with an ESP-32, or use online emulators.
 - Ensure that Grafana is connected with the backend for sending data
 - **Action Items:**
     - Ethan H will work on the Grafana display
