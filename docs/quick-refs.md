@@ -7,6 +7,7 @@ This directory provides some code examples of the sensors that will be used by t
 Below are the store pages for each of our components as well as some links to potentially useful web pages for each:
 * ### [ESP32-WROOM-32E - Microprocessor / Microcontroller](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32E/12091810)
     * [ESP32 Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
+    * [ESP32 Emulator](https://wokwi.com/esp32)
 * ### [DS18B20 - Temperature Sensor](https://www.digikey.com/en/products/detail/adafruit-industries-llc/381/5875807)
     * [Guide for Use With an Arduino #1](https://randomnerdtutorials.com/guide-for-ds18b20-temperature-sensor-with-arduino/)
     * [Guide for Use With an Arduino #2](https://lastminuteengineers.com/ds18b20-arduino-tutorial/)
