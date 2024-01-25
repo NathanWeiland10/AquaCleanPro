@@ -33,6 +33,9 @@ jobs:
           name: aquaclean-pro-html
           path: docs/_html/html/*
 
+      - name: Create CNAME file
+        run: echo "docs.aquacleanpro.org" > docs/CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         # If push to main, deploy to pages
@@ -42,3 +45,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/_html/html
           force_orphan: true
+
+        
