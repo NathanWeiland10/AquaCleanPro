@@ -36,6 +36,9 @@ jobs:
       - name: Create CNAME file
         run: echo "docs.aquacleanpro.org" > docs/CNAME
 
+      - name: List contents of docs directory
+        run: ls -R docs
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         # If push to main, deploy to pages
