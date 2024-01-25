@@ -26,7 +26,7 @@ Components
 Usage
 =====
 
-Run ``docker-compose -f docker/compose.yml up [--detach]`` to initalize all server components.
+Run ``docker-compose -f docker/compose.yml up [--detach]`` to initialize all server components.
 
 - The ``--detach`` option starts the containers in the background and leaves them running.
 
