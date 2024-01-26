@@ -16,3 +16,4 @@ Welcome to the AquaClean Pro Documentation!
 
     meeting-minutes/week0
     meeting-minutes/week1
+    meeting-minutes/week2
