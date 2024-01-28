@@ -1,0 +1,3 @@
+[submodule "source/tinyaes"]
+	path = source/tinyaes
+	url = https://github.com/kokke/tiny-AES-c
