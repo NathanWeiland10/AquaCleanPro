@@ -17,7 +17,6 @@ int main()
     size_t paddedLength = strlen(testData) + 16 - (strlen(testData) % 16);
     unsigned char paddedData[paddedLength];
     // Copy current data over to padded buffer
-    printf("Length of buffer pre-padding: %d\n", strlen(paddedData));
     // Copy data to paddedData, but add padding at the end
     for(int i = 0; i < paddedLength; i++)
     {
@@ -27,9 +26,10 @@ int main()
         }
         else
         {
-            paddedData[i] = (strlen(testData) % 16);
+            paddedData[i] = 16 - (strlen(testData) % 16);
         }
     }
+    printf("Length of buffer: %d\n", strlen(paddedData));
     printf("Is the string divisible by 16? %d\n", strlen(paddedData) % 16 == 0);
     assert(strlen(paddedData) % 16 == 0);
 
@@ -48,12 +48,22 @@ int main()
     printf("%s", key);
 
     AES_init_ctx(&ctx, key);
-    AES_CBC_encrypt_buffer(&ctx, testData, 32);
+    AES_CBC_encrypt_buffer(&ctx, paddedData, paddedLength);
+    fflush(stdout);
 
     printf("\n Encrypted buffer\n");
-    for(int i = 0; i < 32; i++)
+    for(int i = 0; i < paddedLength; i++)
     {
-        printf("%.2x", testData[i]);
+        printf("%.2x", paddedData[i]);
     }
+    fflush(stdout);
+
+    // Try decrypting
+    printf("\nDecryption...\n");
+    AES_init_ctx(&ctx, key);
+    AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
+    printf("%s", paddedData);
+
+    printf('\n');
 }
 
