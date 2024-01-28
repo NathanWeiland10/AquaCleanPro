@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "tinyaes/aes.h"
 
 #define AES128 1
@@ -13,7 +14,6 @@ int main()
     unsigned char str[] = "This a sample text, Length eq 32";
     // TODO: Add padding to support strings where str.length() % 16 != 0 (padding)
     unsigned char key[128];
-    uint8_t iv[] = "bbbbbbbbbbbbbbbb";
 
     printf("\n Raw buffer\n");
     printf("%s", str);
