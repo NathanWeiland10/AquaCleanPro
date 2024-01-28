@@ -38,17 +38,20 @@ int main()
 
     // Generate a key
     unsigned char key[128];
+    unsigned char iv[128];
     srand(time(NULL));
+    printf("\n Key Generated: \n");
     for(int i = 0; i < sizeof(key); i++)
     {
-        key[i] = rand() % 128;
+        key[i] = rand() % 256;
+        iv[i] = rand() % 256;
+        printf("%c", key[i]);
     }
-    printf("\n Key Generated:\n");
-    printf("%s", key);
     fflush(stdout);
 
     // Encrypt data (print hex)
     AES_init_ctx(&ctx, key);
+    AES_ctx_set_iv(&ctx, iv);
     AES_CBC_encrypt_buffer(&ctx, paddedData, paddedLength);
     printf("\n Encrypted buffer\n");
     for(int i = 0; i < paddedLength; i++)
@@ -60,6 +63,7 @@ int main()
     // Try decrypting
     printf("\nDecryption...\n");
     AES_init_ctx(&ctx, key);
+    AES_ctx_set_iv(&ctx, iv);
     AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
     for(int i = 0; i < paddedLength; i++)
     {
