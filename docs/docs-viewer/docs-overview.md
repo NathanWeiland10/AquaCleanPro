@@ -1,16 +1,16 @@
 # Overview of the AquaClean Pro Document Viewer (ACP-DV)
-* The ACP-DV can be found at https://nathanweiland10.github.io/AquaCleanPro/ or under the custom domain https://docs.aquacleanpro.org/.
+* The ACP-DV can be found at [https://nathanweiland10.github.io/AquaCleanPro/](https://nathanweiland10.github.io/AquaCleanPro/) or under the custom domain [https://docs.aquacleanpro.org/](https://docs.aquacleanpro.org/).
 * The ACP-DV contains source code for the AquaClean Pro, meeting minutes, and other useful links and resources regarding the development and use of the AquaClean Pro.
 
 ## Adding Files to the ACP-DV
 * To add files to the ACP-DV, follow these steps:
-    1) Create a new GitHub branch from the repo: https://github.com/NathanWeiland10/AquaCleanPro and create a markdown file. Typically these files should be placed in the `docs` directory.
+    1) Create a new GitHub branch from the repo: [https://github.com/NathanWeiland10/AquaCleanPro](https://github.com/NathanWeiland10/AquaCleanPro) and create a markdown file. Typically these files should be placed in the `docs` directory.
     2) Under the `docs` directory, locate the `index.rst` file. The file should look like the following:
         * ![index.rst File](rst.png)
     3) Either add to an existing `.. toctree::` or create a new one. Creating a new `.. toctree::` with a specified caption will create a header in the ACP-DV, as shown in the following for "Documentation":
         * ![Tree Header](tree-header.png)
     4) Add the relative path of the markdown file under the `.. toctree::`.
-    5) Upload your branch / push your changes to the GitHub repo. An automated job should be ran which will allow you to view the ACP-DV before it goes live at https://docs.aquacleanpro.org/. This can be found by clicking on the `Actions` tab, then the changes you pushed. Near the bottom you will find the local version of the ACP-DV. Extract the file and open `index.html`:
+    5) Upload your branch / push your changes to the [GitHub repo](https://github.com/NathanWeiland10/AquaCleanPro). An automated job should be ran which will allow you to view the ACP-DV before it goes live at https://docs.aquacleanpro.org/. This can be found by clicking on the `Actions` tab, then the changes you pushed. Near the bottom you will find the local version of the ACP-DV. Extract the file and open `index.html`:
         * ![Local View](local-view.png)
     6) Push your changes to the `main` branch after you have viewed the local version of the ACP-DV and are satisfied with the changes. An automated script will be ran to add your changes to the live ACP-DV, which can be found at https://docs.aquacleanpro.org/.
 
