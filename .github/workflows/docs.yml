@@ -1,6 +1,9 @@
 name: docs
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - main  # Adjust this to match your main branch name
 
 jobs:
   docs:
@@ -37,6 +40,7 @@ jobs:
         run: echo "docs.aquacleanpro.org" > docs/CNAME
 
       - name: Update Custom Domain
+        working-directory: ${{ github.workspace }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
