@@ -13,7 +13,8 @@
     5) Push your changes to the `gh-pages` branch. An automated script will be ran to add your changes to the ACP-DV.
 
 ## Notes About Markdown Files in the ACP-DV
-* Header levels matter in your markdown files regarding the ACP-DV. A header level of one (i.e., a single hashtag `#`)
+* Header levels matter in your markdown files regarding the ACP-DV. A header level of one (i.e., a single hashtag `#`) will act as a header for the name of the file. For example, in the below example, the level one header of the file will be displayed in the viewer (Ex: "Server Configuration"), **not the name of the file itself**:
+    * ![Alt text](image-2.png)
 
 ## Current Issues with the ACP-DV
 * When changes are pushed to the `gh-pages` branch, the custom domain of `docs.aquacleanpro.org` is reset and manually needs to be updated in the [GitHub repo](https://github.com/NathanWeiland10/AquaCleanPro) under Setting -> Pages -> Custom domain:
