@@ -9,6 +9,7 @@ Welcome to the AquaClean Pro Documentation!
     code 
     changelog
     quick-refs
+    docs-viewer/docs-overview
 
 .. toctree::
     :caption: Meeting Minutes
