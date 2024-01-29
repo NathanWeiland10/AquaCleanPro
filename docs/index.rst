@@ -5,7 +5,6 @@ Welcome to the AquaClean Pro Documentation!
 .. toctree::
     :caption: Documentation
 
-    docs-viewer/docs-overview
     server-config
     code 
     changelog
