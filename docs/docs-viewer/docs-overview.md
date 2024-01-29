@@ -10,7 +10,7 @@
     3) Either add to an existing `.. toctree::` or create a new one. Creating a new `.. toctree::` with a specified caption will create a header in the ACP-DV, as shown in the following for "Documentation":
         * ![Alt text](image-2.png)
     4) Add the relative path of the markdown file under the `.. toctree::`.
-    5) Push your changes to the `gh-pages` branch. An automated script will be ran to add your changes to the ACP-DV.
+    5) Push your changes to the `main` branch. An automated script will be ran to add your changes to the ACP-DV.
 
 ## Notes About Markdown Files in the ACP-DV
 * Header levels matter in your markdown files regarding the ACP-DV. A header level of one (i.e., a single hashtag `#`) will act as a header for the name of the file. For example, in the below example, the level one header of the file will be displayed in the viewer (Ex: "Server Configuration"), **not the name of the file itself**:
