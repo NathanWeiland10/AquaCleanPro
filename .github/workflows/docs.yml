@@ -11,6 +11,7 @@ jobs:
         username: ethantimpe
         password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
 
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -26,6 +27,8 @@ jobs:
 
       - name: Export HTML
         uses: actions/upload-artifact@v3
+        # If not on main, export HTML build to zip
+        if: ${{ github.ref != 'refs/heads/main' }}
         with:
           name: aquaclean-pro-html
           path: docs/_html/html/*
@@ -35,9 +38,12 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        # If push to main, deploy to pages
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/_html/html
           force_orphan: true
-          custom_domain: docs.aquacleanpro.org
+
+        
