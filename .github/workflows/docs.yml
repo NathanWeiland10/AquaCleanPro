@@ -36,14 +36,19 @@ jobs:
       - name: Create CNAME file
         run: echo "docs.aquacleanpro.org" > docs/CNAME
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        # If push to main, deploy to pages
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_html/html
-          force_orphan: true
+      - name: Update Custom Domain
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add docs/CNAME
+          git commit -m "Update custom domain"
+          git push origin HEAD:custom-domain-update
 
-        
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: custom-domain-update
+          destination_branch: main
+          title: "Update Custom Domain"
+          body: "Automated pull request to update custom domain."
