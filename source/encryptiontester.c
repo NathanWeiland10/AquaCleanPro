@@ -47,6 +47,11 @@ int main()
         iv[i] = rand() % 128;
         printf("%c", key[i]);
     }
+    printf("\n IV Generated: \n");
+    for(int x = 0; x < sizeof(iv); x++)
+    {
+        printf("%c", iv[x]);
+    }
     fflush(stdout);
 
     // Encrypt data (print hex)
@@ -56,7 +61,7 @@ int main()
     printf("\n Encrypted buffer\n");
     for(int i = 0; i < paddedLength; i++)
     {
-        printf("%.2x", paddedData[i]);
+        printf("%c", paddedData[i]);
     }
     fflush(stdout);
 
