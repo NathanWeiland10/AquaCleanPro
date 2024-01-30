@@ -1,4 +1,5 @@
-# Tuesday, January 30, 2024
+# Week 3
+## Tuesday, January 30, 2024
 ### Time
 - 8:00am - 9:20am
 ### Attendees/Role
