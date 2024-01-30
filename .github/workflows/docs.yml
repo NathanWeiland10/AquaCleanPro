@@ -44,6 +44,5 @@ jobs:
           force_orphan: true
 
       - name: Create CNAME file
-        run: echo 'docs.aquacleanpro.org' > ./docs/CNAME
-
+        run: echo 'docs.aquacleanpro.org' > ./CNAME
         
