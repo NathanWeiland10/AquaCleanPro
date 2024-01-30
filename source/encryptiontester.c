@@ -43,8 +43,8 @@ int main()
     printf("\n Key Generated: \n");
     for(int i = 0; i < sizeof(key); i++)
     {
-        key[i] = rand() % 256;
-        iv[i] = rand() % 256;
+        key[i] = rand() % 128;
+        iv[i] = rand() % 128;
         printf("%c", key[i]);
     }
     fflush(stdout);
