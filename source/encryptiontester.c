@@ -72,5 +72,7 @@ int main()
     fflush(stdout);
 
     printf('\n');
+
+    return 0;
 }
 
