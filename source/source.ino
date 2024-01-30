@@ -4,11 +4,11 @@
 WifiManager wifiManager; ///< Wifi manager instance used to create WiFi portal
 WifiManagerParameter runtimeParam; ///< Device runtime parameter configured in WiFi portal
 
-int totalRuntime = -1; ///< Total time in seconds that the device will run before shutting down.
+int totalRuntime = -1; ///< Total time in seconds that the device will run before shutting down. Initialized at -1 until configured from WiFi portal.
 int runtime = 0; ///< Time in seconds that the device has been active.
 hw_timer_t *runtimeTimer = NULL; ///< Hardware timer used to increment runtime every second.
 
-/// @brief ISR that increments runtime every second.
+/// @brief Interrupt service routine that increments runtime every second.
 void IRAM_ATTR onTimer(){
     runtime++;
 }
