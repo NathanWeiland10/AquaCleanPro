@@ -34,7 +34,7 @@ jobs:
           path: docs/_html/html/*
 
       - name: Create CNAME file
-        run: echo "docs.aquacleanpro.org" > docs/CNAME
+        run: mv docs/CNAME docs/_html/html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
