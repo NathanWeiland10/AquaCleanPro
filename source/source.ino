@@ -25,6 +25,7 @@ void setup() {
 }
 
 /// @brief Main update loop
+/// @brief Main update loop
 void loop() {
     wifiManager.process();
     httpUpload();
