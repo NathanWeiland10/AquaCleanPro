@@ -1,6 +1,10 @@
-# Team AquaClean Pro
+<p align="center">
+    <h1 align="center">Team AquaClean Pro</h1>
+</p>
 
-<img src="images/Logo_Idea_1.png" alt="Logo" width="280"/>
+<p align="center">
+    <img src="images/Logo_Idea_1.png" alt="Logo" width="280">
+</p>
 
 ## Overview
 This repository is for Team Projects (CEG 4980 & 4981) from Fall 2023 to Spring 2024, Team #11 - AquaClean Pro. 
