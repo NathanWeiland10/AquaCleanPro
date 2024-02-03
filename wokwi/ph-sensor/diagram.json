@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Thomas McGuff",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -115.2, "left": 24.04, "attrs": {} },
+    {
+      "type": "chip-ph-sensor",
+      "id": "chip1",
+      "top": -19.4,
+      "left": -119.02,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "chip1:A", "esp:34", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

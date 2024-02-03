@@ -1,0 +1,20 @@
+{
+  "name": "ph-sensor",
+  "author": "Thomas McGuff",
+  "pins": [
+    "A",
+    "+",
+    "-"
+  ],
+  "controls": [
+    {
+      "id": "value",
+      "label": "Value",
+      "type": "range",
+      "default": 2.5,
+      "min": 0.0,
+      "max": 5.0,
+      "step": 0.01
+    }
+  ]
+}
