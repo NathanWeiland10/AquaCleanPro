@@ -3,6 +3,11 @@ Welcome to the AquaClean Pro Documentation!
 ###########################################
 
 .. toctree::
+    :caption: Design
+
+    design
+    
+.. toctree::
     :caption: Documentation
 
     server-config
