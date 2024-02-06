@@ -87,7 +87,7 @@ int main()
     fptr = fopen("iv.txt", "w");
     for(int i = 0; i < sizeof(iv); i++)
     {
-        fprtinf(fptr, "%.2x", iv[i]);
+        fprintf(fptr, "%.2x", iv[i]);
     }
     fclose(fptr);
     printf('\n');
