@@ -32,7 +32,7 @@ int main()
     // Print status of buffer before encryption
     printf("Length of buffer: %d\n", strlen(paddedData));
     printf("Is the string divisible by 16? %d\n", strlen(paddedData) % 16 == 0);
-    assert(strlen(paddedData) % 16 == 0);
+    // assert(strlen(paddedData) % 16 == 0);
     printf("\n Raw buffer\n");
     printf("%s", paddedData);
     fflush(stdout);
@@ -59,7 +59,7 @@ int main()
     AES_init_ctx(&ctx, key);
     AES_ctx_set_iv(&ctx, iv);
     AES_CBC_encrypt_buffer(&ctx, paddedData, paddedLength);
-    printf("\n Encrypted buffer\n");
+    printf("\nEncrypted buffer\n");
     for(int i = 0; i < paddedLength; i++)
     {
         printf("%c", paddedData[i]);
@@ -77,6 +77,19 @@ int main()
     }
     fflush(stdout);
 
+    // Print stuff out
+    FILE* fptr = fopen("key.txt", "w");
+    for(int i = 0; i < sizeof(key); i++)
+    {
+        fprintf(fptr, "%.2x", key[i]);
+    }
+    fclose(fptr);
+    fptr = fopen("iv.txt", "w");
+    for(int i = 0; i < sizeof(iv); i++)
+    {
+        fprtinf(fptr, "%.2x", iv[i]);
+    }
+    fclose(fptr);
     printf('\n');
 
     return 0;
