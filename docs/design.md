@@ -5,26 +5,22 @@
  
 
 **Objective 1**: The robot can collect trash and debris on the surface of a body of freshwater. 
-
-Trash and debris refer to smaller pieces of waste that float on the surface of the water, such as wrappers, bottles, and aluminum cans, and would be unable to collect larger waste.  
+- Trash and debris refer to smaller pieces of waste that float on the surface of the water, such as wrappers, bottles, and aluminum cans, and would be unable to collect larger waste.  
 
  
 
 **Objective 2**: The robot can take measurements of the water quality. 
-
-Water quality refers to four main statistics about the body of water the robot resides in: temperature, pH level, total dissolved solids, and turbidity. The robot periodically measures these numbers and transmits them wirelessly to be stored in a database.  
+- Water quality refers to four main statistics about the body of water the robot resides in: temperature, pH level, total dissolved solids, and turbidity. The robot periodically measures these numbers and transmits them wirelessly to be stored in a database.  
 
  
 
 **Objective 3**: A wireless user interface can display metrics measured by the robot. 
-
-The User Interface could refer to a website that is hosted separately that displays the temperature, the pH level, turbidity, and total dissolved solids of the water; the four metrics the robot collects. 
+- The User Interface could refer to a website that is hosted separately that displays the temperature, the pH level, turbidity, and total dissolved solids of the water; the four metrics the robot collects. 
 
  
 
 **Objective 4**: The robot can autonomously move across the surface of the water. 
-
-The robot moves across the surface of the water by use of propellors, avoiding collision by utilizing sensors to detect walls. 
+ - The robot moves across the surface of the water by use of propellors, avoiding collision by utilizing sensors to detect walls. 
 
 # Assumptions 
 
@@ -83,7 +79,7 @@ The robot moves across the surface of the water by use of propellors, avoiding c
 
 # Constraints 
 
-| Const No. | Constraint                                                                                           |
+| No.       | Constraint                                                                                           |
 | --------- | ---------------------------------------------------------------------------------------------------- |
 | 1.0       | Total bill of materials shall not exceed $300 without Faculty Advisor approval.                      |
 | 2.0       | The AquaClean Pro must fit within a box that has dimensions 45cm x 45cm x 60cm.                      |
