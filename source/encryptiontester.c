@@ -90,6 +90,12 @@ int main()
         fprintf(fptr, "%.2x", iv[i]);
     }
     fclose(fptr);
+    fptr = fopen("buffer.txt", "w");
+    for(int i = 0; i < sizeof(paddedData); i++)
+    {
+        fprintf(fptr, "%.2x", paddedData[i]);
+    }
+    fclose(fptr);
     printf('\n');
 
     return 0;
