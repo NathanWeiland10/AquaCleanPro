@@ -31,8 +31,8 @@ int main()
     // Convert from hex back to char
     for(int i = 0; i < 128; i+=2)
     {
-       char* hex;
-       __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+       char hex[2];
+       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
        int c = strtoul(hex, NULL, 16);
        buffer[d++] = (unsigned char)c;
     }
@@ -43,8 +43,8 @@ int main()
     d = 0;
     for(int i = 0; i < 256; i+=2)
     {
-       char* hex;
-       __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+       char hex[2];
+       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
        int c = strtoul(hex, NULL, 16);
        key[d++] = (unsigned char)c;
     }
@@ -55,8 +55,8 @@ int main()
     d = 0;
     for(int i = 0; i < 256; i+=2)
     {
-      char* hex;
-      __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+      char hex[2];
+      sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
       int c = strtoul(hex, NULL, 16);
       iv[d++] = (unsigned char)c;
       printf("%0.2x", iv[d-1]);
