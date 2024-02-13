@@ -66,8 +66,16 @@ int main()
     }
     fflush(stdout);
 
+    // Print the encrypted buffer to a file
+    FILE* fptr = fopen("buffer.txt", "w");
+    for(int i = 0; i < sizeof(paddedData); i++)
+    {
+        fprintf(fptr, "%.2x", paddedData[i]);
+    }
+    fclose(fptr);
+
     // Try decrypting
-    printf("\nDecryption...\n");
+    printf("\nDecrypted buffer\n");
     AES_init_ctx(&ctx, key);
     AES_ctx_set_iv(&ctx, iv);
     AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
@@ -78,7 +86,7 @@ int main()
     fflush(stdout);
 
     // Print stuff out
-    FILE* fptr = fopen("key.txt", "w");
+    fptr = fopen("key.txt", "w");
     for(int i = 0; i < sizeof(key); i++)
     {
         fprintf(fptr, "%.2x", key[i]);
@@ -88,12 +96,6 @@ int main()
     for(int i = 0; i < sizeof(iv); i++)
     {
         fprintf(fptr, "%.2x", iv[i]);
-    }
-    fclose(fptr);
-    fptr = fopen("buffer.txt", "w");
-    for(int i = 0; i < sizeof(paddedData); i++)
-    {
-        fprintf(fptr, "%.2x", paddedData[i]);
     }
     fclose(fptr);
     printf('\n');
