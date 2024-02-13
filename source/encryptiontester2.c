@@ -24,44 +24,45 @@ int main()
 
     // Get the buffer
     FILE* fptr = fopen("buffer.txt", "r");
-    fgets(fileBuffer, 128, fptr);
+    fgets(fileBuffer, 129, fptr);
     fclose(fptr);
     int d = 0;
     // The last two characters of the buffer should be the number of padded characters
     // Convert from hex back to char
-    for(int i = 0; i < 128 - 2; i+=2)
+    for(int i = 0; i < 128; i+=2)
     {
        char* hex;
        __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
-       char c = strtoul(hex, NULL, 16);
-       buffer[d++] = c;
+       int c = strtoul(hex, NULL, 16);
+       buffer[d++] = (unsigned char)c;
     }
     // Key
     fptr = fopen("key.txt", "r");
     fgets(fileBuffer, 256, fptr);
     fclose(fptr);
     d = 0;
-    for(int i = 0; i < 256 - 2; i+=2)
+    for(int i = 0; i < 256; i+=2)
     {
        char* hex;
        __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
-       char c = strtoul(hex, NULL, 16);
-       key[d++] = c;
+       int c = strtoul(hex, NULL, 16);
+       key[d++] = (unsigned char)c;
     }
     // IV
     fptr = fopen("iv.txt", "r");
     fgets(fileBuffer, 256, fptr);
     fclose(fptr);
     d = 0;
-    for(int i = 0; i < 256 - 2; i+=2)
+    for(int i = 0; i < 256; i+=2)
     {
       char* hex;
       __mingw_asprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
-      char c = strtoul(hex, NULL, 16);
-      iv[d++] = c;
+      int c = strtoul(hex, NULL, 16);
+      iv[d++] = (unsigned char)c;
+      printf("%0.2x", iv[d-1]);
     }
  
-    printf("Encrypted buffer:\n");
+    printf("\nEncrypted buffer:\n");
     for(int i = 0; i < sizeof(buffer); i++)
     {
       printf("%c", buffer[i]);
@@ -74,7 +75,7 @@ int main()
     printf("\nDecrypted buffer:\n");
     for(int i = 0; i < sizeof(buffer); i++)
     {
-        printf("%c", buffer[i]);
+      printf("%c", buffer[i]);
     }
     fflush(stdout);
     return 0;

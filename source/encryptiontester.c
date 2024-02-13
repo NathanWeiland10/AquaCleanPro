@@ -85,17 +85,26 @@ int main()
     }
     fflush(stdout);
 
-    // Print stuff out
+    // Print stuff out (hex)
+    // Key
     fptr = fopen("key.txt", "w");
     for(int i = 0; i < sizeof(key); i++)
     {
         fprintf(fptr, "%.2x", key[i]);
     }
     fclose(fptr);
+    // IV
     fptr = fopen("iv.txt", "w");
     for(int i = 0; i < sizeof(iv); i++)
     {
         fprintf(fptr, "%.2x", iv[i]);
+    }
+    fclose(fptr);
+    // Raw (decrypted) buffer
+    fptr = fopen("rawbuffer.txt", "w");
+    for(int i = 0; i < sizeof(paddedData); i++)
+    {
+        fprintf(fptr, "%.2x", paddedData[i]);
     }
     fclose(fptr);
     printf('\n');
