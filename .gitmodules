@@ -1,3 +1,6 @@
 [submodule "source/tinyaes"]
 	path = source/tinyaes
 	url = https://github.com/kokke/tiny-AES-c
+[submodule "source/postgres"]
+	path = source/postgres
+	url = https://github.com/postgres/postgres
