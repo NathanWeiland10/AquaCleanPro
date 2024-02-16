@@ -1,3 +1,4 @@
+# Run this in the 'source' directory
 MODULES = postgrestest
 EXTENSION = postgrestest
 DATA = postgrestest--1.0.sql

@@ -1,4 +1,7 @@
 .vscode
 *.exe
 *.txt
+*.o
+*.bc
 *.so.*
+*.so
