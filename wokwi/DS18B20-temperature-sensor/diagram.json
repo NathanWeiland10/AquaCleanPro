@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Thomas L. McGuff",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -84, "left": -160, "attrs": {} },
+    { "type": "board-ds18b20", "id": "temp1", "top": -150.06, "left": 5.81, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 9.68,
+      "left": -38.66,
+      "rotate": 90,
+      "attrs": { "value": "4700" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "temp1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "temp1:DQ", "esp:RX0", "green", [ "v0" ] ],
+    [ "temp1:VCC", "esp:VIN", "red", [ "v238.84", "h-205.78", "v-65.33" ] ],
+    [ "r1:1", "esp:RX0", "green", [ "h-0.61", "v-17.1" ] ],
+    [ "r1:2", "esp:3V3", "green", [ "h0.05", "v27.43" ] ]
+  ],
+  "dependencies": {}
+}
