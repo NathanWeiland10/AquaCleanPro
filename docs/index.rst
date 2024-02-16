@@ -3,6 +3,11 @@ Welcome to the AquaClean Pro Documentation!
 ###########################################
 
 .. toctree::
+    :caption: Design
+
+    design
+    
+.. toctree::
     :caption: Documentation
 
     server-config
@@ -19,3 +24,5 @@ Welcome to the AquaClean Pro Documentation!
     meeting-minutes/week1
     meeting-minutes/week2
     meeting-minutes/week3
+    meeting-minutes/week4
+    meeting-minutes/week5
