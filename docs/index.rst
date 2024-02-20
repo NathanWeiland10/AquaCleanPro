@@ -11,6 +11,7 @@ Welcome to the AquaClean Pro Documentation!
     :caption: Documentation
 
     server-config
+    board
     code 
     changelog
     quick-refs
