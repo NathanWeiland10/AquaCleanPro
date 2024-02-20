@@ -62,3 +62,25 @@ float TemperatureSensor::sample(){
     index = (index == NUM_SAMPLES - 1) ? 0 : index + 1;
     return sample;
 }
+
+/// @brief Constructor for the pH sensor class
+/// @param pinNum The pin number connected to the pH sensor
+PHSensor::PHSensor(int pinNum){
+    pin = pinNum;
+}
+
+/// @brief Adds a single sample to the sample array.
+/// @return The value of the sample taken.
+float PHSensor::sample(){
+    float sample = analogRead(pin);
+    sampleArr[index] = sample;
+    index = (index == NUM_SAMPLES - 1) ? 0 : index + 1;
+    return sample;
+}
+
+/// @brief Sorts the samples and returns the median value.
+/// @return The median value of the samples taken converted to a pH value
+float PHSensor::getValue(){
+    sort();
+    return sampleArr[NUM_SAMPLES / 2] * (3.3 / 4095.0);
+}
