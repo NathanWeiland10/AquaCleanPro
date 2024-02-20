@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code &mdash; AquaClean Pro test documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=0d30791a" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=93654010"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Development" href="board.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#assumptions">Assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#constraints">Constraints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="server-config.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="board.html">Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414DistanceSensor"><code class="docutils literal notranslate"><span class="pre">DistanceSensor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv48PHSensor"><code class="docutils literal notranslate"><span class="pre">PHSensor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv46Sensor"><code class="docutils literal notranslate"><span class="pre">Sensor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417TemperatureSensor"><code class="docutils literal notranslate"><span class="pre">TemperatureSensor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv45setupv"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv44loopv"><code class="docutils literal notranslate"><span class="pre">loop()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv49initTimerv"><code class="docutils literal notranslate"><span class="pre">initTimer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414initWifiPortalv"><code class="docutils literal notranslate"><span class="pre">initWifiPortal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417saveParamCallbackv"><code class="docutils literal notranslate"><span class="pre">saveParamCallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv410httpUploadv"><code class="docutils literal notranslate"><span class="pre">httpUpload()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413POSTGREST_URL"><code class="docutils literal notranslate"><span class="pre">POSTGREST_URL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv411wifiManager"><code class="docutils literal notranslate"><span class="pre">wifiManager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412runtimeParam"><code class="docutils literal notranslate"><span class="pre">runtimeParam</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412totalRuntime"><code class="docutils literal notranslate"><span class="pre">totalRuntime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv47runtime"><code class="docutils literal notranslate"><span class="pre">runtime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412runtimeTimer"><code class="docutils literal notranslate"><span class="pre">runtimeTimer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-refs.html">Quick Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-viewer/docs-overview.html">Overview of the AquaClean Pro Document Viewer (ACP-DV)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meeting Minutes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week0.html">Week 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week1.html">Week 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week2.html">Week 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week3.html">Week 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week4.html">Week 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week5.html">Week 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week6.html">Week 6</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AquaClean Pro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code">
+<h1>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h1>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv414DistanceSensor">
+<span id="_CPPv314DistanceSensor"></span><span id="_CPPv214DistanceSensor"></span><span id="DistanceSensor"></span><span class="target" id="classDistanceSensor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DistanceSensor</span></span></span><a class="headerlink" href="#_CPPv414DistanceSensor" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14DistanceSensor14DistanceSensorEi">
+<span id="_CPPv3N14DistanceSensor14DistanceSensorEi"></span><span id="_CPPv2N14DistanceSensor14DistanceSensorEi"></span><span id="DistanceSensor::DistanceSensor__i"></span><span class="target" id="classDistanceSensor_1ac90dc1ed9719585597fdd7575e430f03"></span><span class="sig-name descname"><span class="n"><span class="pre">DistanceSensor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pin</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14DistanceSensor14DistanceSensorEi" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14DistanceSensor8getValueEv">
+<span id="_CPPv3N14DistanceSensor8getValueEv"></span><span id="_CPPv2N14DistanceSensor8getValueEv"></span><span id="DistanceSensor::getValue"></span><span class="target" id="classDistanceSensor_1a3aab26d406d5ac9ef2b7268739699508"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14DistanceSensor8getValueEv" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14DistanceSensor3pinE">
+<span id="_CPPv3N14DistanceSensor3pinE"></span><span id="_CPPv2N14DistanceSensor3pinE"></span><span id="DistanceSensor::pin__i"></span><span class="target" id="classDistanceSensor_1a58e1fd7e5e64cf554f175142697f3a99"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pin</span></span></span><a class="headerlink" href="#_CPPv4N14DistanceSensor3pinE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv48PHSensor">
+<span id="_CPPv38PHSensor"></span><span id="_CPPv28PHSensor"></span><span id="PHSensor"></span><span class="target" id="classPHSensor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PHSensor</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv46Sensor" title="Sensor"><span class="n"><span class="pre">Sensor</span></span></a><a class="headerlink" href="#_CPPv48PHSensor" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor8PHSensorEi">
+<span id="_CPPv3N8PHSensor8PHSensorEi"></span><span id="_CPPv2N8PHSensor8PHSensorEi"></span><span id="PHSensor::PHSensor__i"></span><span class="target" id="classPHSensor_1a0549db968991cd78c89b83b0b6bb7d9d"></span><span class="sig-name descname"><span class="n"><span class="pre">PHSensor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pin</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor8PHSensorEi" title="Link to this definition"></a><br /></dt>
+<dd><p>Constructor for the pH sensor class. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pinNum</strong> – The pin number connected to the pH sensor </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor6sampleEv">
+<span id="_CPPv3N8PHSensor6sampleEv"></span><span id="_CPPv2N8PHSensor6sampleEv"></span><span id="PHSensor::sample"></span><span class="target" id="classPHSensor_1a8d1659854f388ed53650d547e14b6763"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor6sampleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a single sample to the sample array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the sample taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor8getValueEv">
+<span id="_CPPv3N8PHSensor8getValueEv"></span><span id="_CPPv2N8PHSensor8getValueEv"></span><span id="PHSensor::getValue"></span><span class="target" id="classPHSensor_1a732b5fcad551020a354a9fd92c3d0190"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor8getValueEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the samples and returns the median value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The median value of the samples taken converted to a pH value </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv46Sensor">
+<span id="_CPPv36Sensor"></span><span id="_CPPv26Sensor"></span><span id="Sensor"></span><span class="target" id="classSensor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Sensor</span></span></span><a class="headerlink" href="#_CPPv46Sensor" title="Link to this definition"></a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="#classPHSensor"><span class="std std-ref">PHSensor</span></a>, <a class="reference internal" href="#classTemperatureSensor"><span class="std std-ref">TemperatureSensor</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor6SensorEv">
+<span id="_CPPv3N6Sensor6SensorEv"></span><span id="_CPPv2N6Sensor6SensorEv"></span><span id="Sensor::Sensor"></span><span class="target" id="classSensor_1a342d6d11ef572c8cba92cb76fb1a294b"></span><span class="sig-name descname"><span class="n"><span class="pre">Sensor</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Sensor6SensorEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Default constructor for the base <a class="reference internal" href="#classSensor"><span class="std std-ref">Sensor</span></a> class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor6sampleEv">
+<span id="_CPPv3N6Sensor6sampleEv"></span><span id="_CPPv2N6Sensor6sampleEv"></span><span id="Sensor::sample"></span><span class="target" id="classSensor_1a413720917c809d54f6f6c976c8e88b6a"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Sensor6sampleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a single sample to the sample array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the sample taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor8getValueEv">
+<span id="_CPPv3N6Sensor8getValueEv"></span><span id="_CPPv2N6Sensor8getValueEv"></span><span id="Sensor::getValue"></span><span class="target" id="classSensor_1af60e2e3a7ab9d990f1bfbba65248cb43"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Sensor8getValueEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the samples and returns the median value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The median value of the samples taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor4sortEv">
+<span id="_CPPv3N6Sensor4sortEv"></span><span id="_CPPv2N6Sensor4sortEv"></span><span id="Sensor::sort"></span><span class="target" id="classSensor_1a4302890fb895e80aabd66bb298331791"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sort</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Sensor4sortEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the sample array by value so that the median can be found. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor3pinE">
+<span id="_CPPv3N6Sensor3pinE"></span><span id="_CPPv2N6Sensor3pinE"></span><span id="Sensor::pin__i"></span><span class="target" id="classSensor_1a0efecf34431610766469857f25e113da"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pin</span></span></span><a class="headerlink" href="#_CPPv4N6Sensor3pinE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor5indexE">
+<span id="_CPPv3N6Sensor5indexE"></span><span id="_CPPv2N6Sensor5indexE"></span><span id="Sensor::index__i"></span><span class="target" id="classSensor_1a15feff658251e4bfc539a53fabd1ce74"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><a class="headerlink" href="#_CPPv4N6Sensor5indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Sensor9sampleArrE">
+<span id="_CPPv3N6Sensor9sampleArrE"></span><span id="_CPPv2N6Sensor9sampleArrE"></span><span id="Sensor::sampleArr__floatA"></span><span class="target" id="classSensor_1aa41fa7b9541ac33f2e3bb3da1dd4da3a"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sampleArr</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">NUM_SAMPLES</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N6Sensor9sampleArrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv417TemperatureSensor">
+<span id="_CPPv317TemperatureSensor"></span><span id="_CPPv217TemperatureSensor"></span><span id="TemperatureSensor"></span><span class="target" id="classTemperatureSensor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TemperatureSensor</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv46Sensor" title="Sensor"><span class="n"><span class="pre">Sensor</span></span></a><a class="headerlink" href="#_CPPv417TemperatureSensor" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17TemperatureSensor17TemperatureSensorEi">
+<span id="_CPPv3N17TemperatureSensor17TemperatureSensorEi"></span><span id="_CPPv2N17TemperatureSensor17TemperatureSensorEi"></span><span id="TemperatureSensor::TemperatureSensor__i"></span><span class="target" id="classTemperatureSensor_1aeb5dd4678ad41eade726f298b15f301b"></span><span class="sig-name descname"><span class="n"><span class="pre">TemperatureSensor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pin</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17TemperatureSensor17TemperatureSensorEi" title="Link to this definition"></a><br /></dt>
+<dd><p>Constructor for the <a class="reference internal" href="#classTemperatureSensor"><span class="std std-ref">TemperatureSensor</span></a> class. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pinNum</strong> – The pin number connected to the temperature sensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17TemperatureSensor6sampleEv">
+<span id="_CPPv3N17TemperatureSensor6sampleEv"></span><span id="_CPPv2N17TemperatureSensor6sampleEv"></span><span id="TemperatureSensor::sample"></span><span class="target" id="classTemperatureSensor_1aae7913c68f3adadfa3c14c62344f1516"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17TemperatureSensor6sampleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a single sample to the sample array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the sample taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17TemperatureSensor10tempSensorE">
+<span id="_CPPv3N17TemperatureSensor10tempSensorE"></span><span id="_CPPv2N17TemperatureSensor10tempSensorE"></span><span id="TemperatureSensor::tempSensor__DS18B20"></span><span class="target" id="classTemperatureSensor_1a93cbf033522be16a378ae5cc0d3e7ece"></span><span class="n"><span class="pre">DS18B20</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tempSensor</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">DS18B20</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N17TemperatureSensor10tempSensorE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="sensors_8cpp"></span><em><span class="pre">file</span></em> <span class="sig-name descname"><span class="pre">sensors.cpp</span></span></dt>
+<dd><div class="docutils container">
+<em>#include “<a class="reference internal" href="#sensors_8hpp"><span class="std std-ref">sensors.hpp</span></a>”</em></div>
+<div class="docutils container">
+<em>#include “Arduino.h”</em></div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="sensors_8hpp"></span><em><span class="pre">file</span></em> <span class="sig-name descname"><span class="pre">sensors.hpp</span></span></dt>
+<dd><div class="docutils container">
+<em>#include &lt;DS18B20.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NUM_SAMPLES">
+<span class="target" id="sensors_8hpp_1af0b23eedf2352de4c1eff77e1401730c"></span><span class="sig-name descname"><span class="n"><span class="pre">NUM_SAMPLES</span></span></span><a class="headerlink" href="#c.NUM_SAMPLES" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino"></span><em><span class="pre">file</span></em> <span class="sig-name descname"><span class="pre">source.ino</span></span></dt>
+<dd><div class="docutils container">
+<em>#include “Arduino.h”</em></div>
+<div class="docutils container">
+<em>#include &lt;WiFiManager.h&gt;</em></div>
+<div class="docutils container">
+<em>#include &lt;HTTPClient.h&gt;</em></div>
+<div class="docutils container">
+<em>#include “<a class="reference internal" href="#sensors_8hpp"><span class="std std-ref">sensors.hpp</span></a>”</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino_1ada06ab1c4bbd307a9fea75726c8894f1"></span><span class="sig-name descname"><span class="pre">void</span> <span class="pre">IRAM_ATTR</span> <span class="pre">onTimer</span> <span class="pre">()</span></span></dt>
+<dd><p>Interrupt service routine that increments runtime every second. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv45setupv">
+<span id="_CPPv35setupv"></span><span id="_CPPv25setupv"></span><span id="setup"></span><span class="target" id="source_8ino_1a4fc01d736fe50cf5b977f755b675f11d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setup</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv45setupv" title="Link to this definition"></a><br /></dt>
+<dd><p>Runs once on start-up. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44loopv">
+<span id="_CPPv34loopv"></span><span id="_CPPv24loopv"></span><span id="loop"></span><span class="target" id="source_8ino_1afe461d27b9c48d5921c00d521181f12f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44loopv" title="Link to this definition"></a><br /></dt>
+<dd><p>Main update loop. </p>
+<p>Main update loop </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49initTimerv">
+<span id="_CPPv39initTimerv"></span><span id="_CPPv29initTimerv"></span><span id="initTimer"></span><span class="target" id="source_8ino_1a5a7931957f8a5298b3982cab604da1ee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initTimer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49initTimerv" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes the hardware timer used to calculate device runtime. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414initWifiPortalv">
+<span id="_CPPv314initWifiPortalv"></span><span id="_CPPv214initWifiPortalv"></span><span id="initWifiPortal"></span><span class="target" id="source_8ino_1a9b6bc0814d7732a78159eba7991932db"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initWifiPortal</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414initWifiPortalv" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes the WiFi portal to obtain network credentials. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417saveParamCallbackv">
+<span id="_CPPv317saveParamCallbackv"></span><span id="_CPPv217saveParamCallbackv"></span><span id="saveParamCallback"></span><span class="target" id="source_8ino_1aeb198256f54c5394b61497892a598fae"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">saveParamCallback</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417saveParamCallbackv" title="Link to this definition"></a><br /></dt>
+<dd><p>Saves runtime setting from WiFi portal to device. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv410httpUploadv">
+<span id="_CPPv310httpUploadv"></span><span id="_CPPv210httpUploadv"></span><span id="httpUpload"></span><span class="target" id="source_8ino_1abce8efcf61b11c209c96f86425edcc27"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">httpUpload</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410httpUploadv" title="Link to this definition"></a><br /></dt>
+<dd><p>Uploads the temperature and pH data to PostgREST (currently uploads fake data) </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv413POSTGREST_URL">
+<span id="_CPPv313POSTGREST_URL"></span><span id="_CPPv213POSTGREST_URL"></span><span id="POSTGREST_URL__cCP"></span><span class="target" id="source_8ino_1a0a8a220b3cf079b3aad2d44edf3e9d05"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">POSTGREST_URL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;http://aquacleanpro.org:3000/water_data&quot;</span></span><a class="headerlink" href="#_CPPv413POSTGREST_URL" title="Link to this definition"></a><br /></dt>
+<dd><p>PostgREST URL for water data table. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411wifiManager">
+<span id="_CPPv311wifiManager"></span><span id="_CPPv211wifiManager"></span><span id="wifiManager__WiFiManager"></span><span class="target" id="source_8ino_1a8afdaf6df934dd5aa47343293903c670"></span><span class="n"><span class="pre">WiFiManager</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wifiManager</span></span></span><a class="headerlink" href="#_CPPv411wifiManager" title="Link to this definition"></a><br /></dt>
+<dd><p>WiFi manager instance used to create WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412runtimeParam">
+<span id="_CPPv312runtimeParam"></span><span id="_CPPv212runtimeParam"></span><span id="runtimeParam__WiFiManagerParameter"></span><span class="target" id="source_8ino_1af02ba4a95075daf46d3972a02cd0268e"></span><span class="n"><span class="pre">WiFiManagerParameter</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runtimeParam</span></span></span><a class="headerlink" href="#_CPPv412runtimeParam" title="Link to this definition"></a><br /></dt>
+<dd><p>Device runtime parameter configured in WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412totalRuntime">
+<span id="_CPPv312totalRuntime"></span><span id="_CPPv212totalRuntime"></span><span id="totalRuntime__i"></span><span class="target" id="source_8ino_1a2a72013efce096390c4d1abb296f6754"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">totalRuntime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv412totalRuntime" title="Link to this definition"></a><br /></dt>
+<dd><p>Total time in seconds that the device will run before shutting down. Initialized at -1 until configured from WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv47runtime">
+<span id="_CPPv37runtime"></span><span id="_CPPv27runtime"></span><span id="runtime__i"></span><span class="target" id="source_8ino_1a6885fec41faff728c1e6173cfb69e81f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runtime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv47runtime" title="Link to this definition"></a><br /></dt>
+<dd><p>Time in seconds that the device has been active. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412runtimeTimer">
+<span id="_CPPv312runtimeTimer"></span><span id="_CPPv212runtimeTimer"></span><span id="runtimeTimer__hw_timer_tP"></span><span class="target" id="source_8ino_1a0e2412c4c92e209d6c6ff0799f364e77"></span><span class="n"><span class="pre">hw_timer_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">runtimeTimer</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NULL</span></span><a class="headerlink" href="#_CPPv412runtimeTimer" title="Link to this definition"></a><br /></dt>
+<dd><p>Hardware timer used to increment runtime every second. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b"></span><em><span class="pre">dir</span></em> <span class="sig-name descname"><span class="pre">source</span></span></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="board.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
