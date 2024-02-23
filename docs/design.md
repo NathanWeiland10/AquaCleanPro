@@ -91,4 +91,3 @@
 | 7.0       | The AquaClean Pro must use end to end encryption for wireless communication.                         |
 | 8.0       | Parts shall be sourced from WSU approved vendors: Digikey, Mouser, Robot Shop, MaxBotix, Midwest Surplus Electronics, or SparkFun. The list of approved vendors is subject to change. Updated lists of approved vendors will be posted in Pilot. |
 | 9.0       | AquaClean Pro’s water quality and distance sensors’ probes must be waterproof to IP67 or higher.     |
-
