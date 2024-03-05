@@ -18,8 +18,8 @@ int totalRuntime = -1; ///< Total time in seconds that the device will run befor
 int runtime = 0; ///< Time in seconds that the device has been active.
 hw_timer_t *runtimeTimer = NULL; ///< Hardware timer used to increment runtime every second.
 struct AES_ctx ctx;
-unsigned char key = "<ENTER KEY HERE>";
-unsigned char iv = "<ENTER IV HERE>";
+unsigned char hexKey = "<ENTER 256 HEX KEY HERE>";
+unsigned char hexIv = "<ENTER 256 HEX IV HERE>";
 
 /// @brief Interrupt service routine that increments runtime every second.
 void IRAM_ATTR onTimer(){
@@ -28,6 +28,31 @@ void IRAM_ATTR onTimer(){
 
 void setup() 
 {
+    unsigned char fileBuffer[256];
+    unsigned char key[128];
+    unsigned char iv[128];
+    // Key
+    strcpy(fileBuffer, hexKey);
+    d = 0;
+    for(int i = 0; i < 256; i+=2)
+    {
+       char hex[2];
+       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+       int c = strtoul(hex, NULL, 16);
+       key[d++] = (unsigned char)c;
+    }
+    // IV
+    strcpy(fileBuffer, hexIv);
+    d = 0;
+    for(int i = 0; i < 256; i+=2)
+    {
+      char hex[2];
+      sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+      int c = strtoul(hex, NULL, 16);
+      iv[d++] = (unsigned char)c;
+      printf("%0.2x", iv[d-1]);
+    }
+
     Serial.begin(115200);
     initTimer();
     initWifiPortal();
