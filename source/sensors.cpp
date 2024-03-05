@@ -84,3 +84,34 @@ float PHSensor::getValue(){
     sort();
     return sampleArr[NUM_SAMPLES / 2] * (3.3 / 4095.0);
 }
+
+/// @brief Default constructor for DistanceSensor class
+/// @param rx Receiver pin for serial communication
+/// @param tx Transmission pin for serial communication
+DistanceSensor::DistanceSensor(int rx, int tx){
+    serialComm = SoftwareSerial(rx, tx);
+}
+
+/// @brief Gets distance value from DistanceSensor
+/// @return Distance in cm
+float DistanceSensor::getValue(){
+    unsigned char data[4] = {};
+
+    // Get 4 bytes of data
+    do{
+        for (int i = 0; i < 4; i++){
+            data[i] = serialComm.read();
+        }
+    } while (serialComm.read() == 0xff)
+
+    serialComm.flush();
+
+    if (data[0] == 0xff){
+        int sum = (data[0] + data[1] + data[2]) & 0x00FF;
+
+        if (sum == data[3]){
+            return ((float) (data[1] << 8) + data[2]) / 10;
+        }
+    }
+    else return -1.0f;
+}

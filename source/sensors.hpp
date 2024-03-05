@@ -1,4 +1,5 @@
 #include <DS18B20.h>
+#include <SoftwareSerial.h>
 #define NUM_SAMPLES 32
 
 class Sensor{
@@ -36,9 +37,9 @@ class PHSensor : public Sensor {
 
 class DistanceSensor {
     public:
-        DistanceSensor(int pin);
+        DistanceSensor(int rxPin, int txPin);
 
         float getValue();
     private:
-        int pin;
+        SoftwareSerial serialComm;
 };
