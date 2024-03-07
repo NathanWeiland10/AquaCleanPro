@@ -4,9 +4,9 @@
 #include <WiFiManager.h>
 #include <HTTPClient.h>
 
-#include "tinyaes/aes.hpp"
+#include "aes.hpp"
 #include "Arduino.h"
-#include "sensors.hpp"
+// #include "sensors.hpp"
 
 #define AES128 1
 
@@ -18,8 +18,8 @@ int totalRuntime = -1; ///< Total time in seconds that the device will run befor
 int runtime = 0; ///< Time in seconds that the device has been active.
 hw_timer_t *runtimeTimer = NULL; ///< Hardware timer used to increment runtime every second.
 struct AES_ctx ctx;
-unsigned char hexKey = "<ENTER 256 HEX KEY HERE>";
-unsigned char hexIv = "<ENTER 256 HEX IV HERE>";
+unsigned char* hexKey = "<ENTER 256 HEX KEY HERE>";
+unsigned char* hexIv = "<ENTER 256 HEX IV HERE>";
 
 /// @brief Interrupt service routine that increments runtime every second.
 void IRAM_ATTR onTimer(){
@@ -33,7 +33,7 @@ void setup()
     unsigned char iv[128];
     // Key
     strcpy(fileBuffer, hexKey);
-    d = 0;
+    int d = 0;
     for(int i = 0; i < 256; i+=2)
     {
        char hex[2];

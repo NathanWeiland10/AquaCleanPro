@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <string.h>
 #include <time.h>
-#include "tinyaes/aes.h"
+#include "aes.h"
 
 #define AES128 1
 
