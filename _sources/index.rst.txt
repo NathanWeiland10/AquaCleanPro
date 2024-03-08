@@ -12,7 +12,8 @@ Welcome to the AquaClean Pro Documentation!
 
     server-config
     board
-    code 
+    code
+    encryption 
     changelog
     quick-refs
     docs-viewer/docs-overview
