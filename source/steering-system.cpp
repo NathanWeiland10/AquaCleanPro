@@ -4,9 +4,9 @@
 /// @brief Default constructor of the steering system
 /// @param _leftMotor Reference to the left motor
 /// @param _rightMotor Reference to the right motor
-SteeringSystem::SteeringSystem(Motor _leftMotor, Motor _rightMotor){
-  leftMotor = _leftMotor;
-  rightMotor = _rightMotor;
+SteeringSystem::SteeringSystem(Motor left, Motor right){
+  leftMotor = left;
+  rightMotor = right;
   state = STOPPED;
 }
 

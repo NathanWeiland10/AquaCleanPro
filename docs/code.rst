@@ -7,7 +7,6 @@ Main
 ----
 
 .. doxygenfile:: source.ino
-    :members:
 
 Base Sensor Class
 -----------------

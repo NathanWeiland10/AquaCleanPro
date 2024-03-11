@@ -3,7 +3,7 @@
 
 class SteeringSystem{
     public:
-        SteeringSystem(Motor _leftMotor, Motor _rightMotor);
+        SteeringSystem(Motor left, Motor right);
 
         void stop();
 
