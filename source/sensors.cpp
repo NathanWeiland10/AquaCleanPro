@@ -89,11 +89,12 @@ float PHSensor::getValue(){
 /// @param rx Receiver pin for serial communication
 /// @param tx Transmission pin for serial communication
 DistanceSensor::DistanceSensor(int rx, int tx){
-    serialComm = SoftwareSerial(rx, tx);
+    //serialComm = SoftwareSerial(rx, tx);
+    SoftwareSerial serialComm(rx,tx);
 }
 
 /// @brief Gets distance value from DistanceSensor
-/// @return Distance in cm
+/// @return Distance in centimeters (-1.0 if error)
 float DistanceSensor::getValue(){
     unsigned char data[4] = {};
 
@@ -102,10 +103,11 @@ float DistanceSensor::getValue(){
         for (int i = 0; i < 4; i++){
             data[i] = serialComm.read();
         }
-    } while (serialComm.read() == 0xff)
+    } while (serialComm.read() == 0xff);
 
     serialComm.flush();
 
+    // Calculate and return distance in cm
     if (data[0] == 0xff){
         int sum = (data[0] + data[1] + data[2]) & 0x00FF;
 
@@ -113,5 +115,6 @@ float DistanceSensor::getValue(){
             return ((float) (data[1] << 8) + data[2]) / 10;
         }
     }
+    // If error, return -1.0
     else return -1.0f;
 }
