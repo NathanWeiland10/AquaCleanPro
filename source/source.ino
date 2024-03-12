@@ -10,7 +10,7 @@
 
 #define AES128 1
 
-const char* POSTGREST_URL = "http://aquacleanpro.org:3000/water_data"; ///< PostgREST URL for water data table
+const char* POSTGREST_URL = "http://aquacleanpro.org:3000/encrypted_buffer"; ///< PostgREST URL for water data table
 WiFiManager wifiManager; ///< WiFi manager instance used to create WiFi portal
 WiFiManagerParameter runtimeParam; ///< Device runtime parameter configured in WiFi portal
 
@@ -119,8 +119,10 @@ void httpUpload(double temp, double ph)
         }
     }
     AES_CBC_encrypt_buffer(&ctx, paddedData, paddedLength);
+    // Add json wrapper to paddedData
+    char* wrappedData = "[{\"buffer\":" + paddedData + "}]";
     // Send out encrypted buffer
-    int httpResponseCode = http.POST(data);
+    int httpResponseCode = http.POST(wrappedData);
     Serial.println(httpResponseCode);
     http.end();
   }
