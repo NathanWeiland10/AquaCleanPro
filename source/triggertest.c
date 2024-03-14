@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <postgres.h>
+#include <commands/trigger.h>
 #include <fmgr.h>
 #include <catalog/pg_type.h>
 #include <utils/builtins.h>
@@ -32,6 +33,30 @@ decryptBuffer(PG_FUNCTION_ARGS)
     // Connect to server
     SPI_connect();
 
+    // Set up key and iv
+    unsigned char fileBuffer[256];
+    unsigned char key[128];
+    unsigned char iv[128];
+    strcpy(fileBuffer, hexKey);
+    int d = 0;
+    for(int i = 0; i < 256; i+=2)
+    {
+       char hex[2];
+       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+       int c = strtoul(hex, NULL, 16);
+       key[d++] = (unsigned char)c;
+    }
+    // IV
+    strcpy(fileBuffer, hexIv);
+    d = 0;
+    for(int i = 0; i < 256; i+=2)
+    {
+      char hex[2];
+      sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
+      int c = strtoul(hex, NULL, 16);
+      iv[d++] = (unsigned char)c;
+    }
+
     char* buf;
     // Triggered by INSERT event
     if (TRIGGER_FIRED_BY_INSERT(trigdata->tg_event))
@@ -44,13 +69,13 @@ decryptBuffer(PG_FUNCTION_ARGS)
         int len = VARSIZE(DatumGetVarCharPP(type)) - VARHDRSZ;
         // Set up the context and decrypt
         AES_init_ctx_iv(&ctx, key, iv);
-        AES_CBC_decrypt_buffer(&ctx, buf, len)
+        AES_CBC_decrypt_buffer(&ctx, buf, len);
     }
 
     // Close server connection
     SPI_finish();
     // Return the unencrypted buffer to Postgres
-    PG_RETURN_VARCHAR((VarChar *)buf);
+    PG_RETURN_VARCHAR_P((VarChar *)buf);
     // Can insert this buffer into water_data from SQL
     // If that fails we can look into bringing in a HTTP library and post it that way
 }
