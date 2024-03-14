@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <img src="images/Logo_Idea_1.png" alt="Logo" width="280">
+    <img src="docs/_static/favicon.png" alt="Logo" width="280">
 </p>
 
 ## Overview
@@ -17,7 +17,7 @@ Our project uses a custom domain of `aquacleanpro.org` hosted through Squarespac
 
 1) ### Online Document Viewer
     * The AquaClean Pro Document Viewer (ACP-DV) can be found at [https://docs.aquacleanpro.org/](https://docs.aquacleanpro.org/), which contains information about source code, meeting minutes, and other supporting documentation:
-    ![Alt text](images/document-viewer.png)
+    ![Alt text](docs/_static/document-viewer.png)
 
 2) ### Grafana (Frontend)
     * Our frontend using Grafana can be found at http://www.aquacleanpro.org:8000. Login credentials required.
