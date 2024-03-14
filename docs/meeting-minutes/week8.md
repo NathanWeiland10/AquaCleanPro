@@ -1,4 +1,4 @@
-# Week 7
+# Week 8
 ## Thursday, March 7th, 2024
 ### Time
 - 8:30am - 9:20am
