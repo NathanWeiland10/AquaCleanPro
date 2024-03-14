@@ -36,11 +36,12 @@ void IRAM_ATTR onTimer(){
     steeringSystem.update();
 }
 
-/// @brief Runs once on start-up
+/// @brief Runs once on start-up. Initializes WiFi, ISR, and Serial connection
 void setup() {
     Serial.begin(115200);
     initTimer();
     initWifiPortal();
+    steeringSystem.go();
 }
 
 /// @brief Main update loop
