@@ -6,7 +6,7 @@
 #include <fmgr.h>
 #include <catalog/pg_type.h>
 #include <utils/builtins.h>
-#include "tinyaes/aes.h"
+#include "aes.h"
 
 #define AES128 1
 
