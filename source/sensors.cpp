@@ -1,7 +1,8 @@
 #include "sensors.hpp"
 #include "Arduino.h"
 
-#define PH_CALIBRATION_VALUE 14
+#define PH_SLOPE 143.133
+#define PH_OFFSET 526.035
 
 /// @brief Default constructor for the base Sensor class.
 Sensor::Sensor(){
@@ -74,24 +75,16 @@ PHSensor::PHSensor(int pinNum){
 /// @brief Adds a single sample to the sample array.
 /// @return The value of the sample taken.
 float PHSensor::sample(){
-    float sample = analogRead(pin);
+    float sample = ((float) analogRead(pin) - PH_OFFSET) / PH_SLOPE;
     sampleArr[index] = sample;
     index = (index == NUM_SAMPLES - 1) ? 0 : index + 1;
     return sample;
-}
-
-/// @brief Sorts the samples and returns the median value.
-/// @return The median value of the samples taken converted to a pH value
-float PHSensor::getValue(){
-    sort();
-    return sampleArr[NUM_SAMPLES / 2] * (3.3 / 4095.0 / 6) + PH_CALIBRATION_VALUE;
 }
 
 /// @brief Default constructor for DistanceSensor class
 /// @param rx Receiver pin for serial communication
 /// @param tx Transmission pin for serial communication
 DistanceSensor::DistanceSensor(int rx, int tx){
-    //serialComm = SoftwareSerial(rx, tx);
     SoftwareSerial serialComm(rx,tx);
 }
 

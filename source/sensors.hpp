@@ -31,8 +31,6 @@ class PHSensor : public Sensor {
         PHSensor(int pin);
 
         float sample();
-        
-        float getValue();
 };
 
 class DistanceSensor {
