@@ -27,3 +27,9 @@ Our project uses a custom domain of `aquacleanpro.org` hosted through Squarespac
 
 4) ### PostgREST (Backend)
     * Our backend service using PostgREST for our project can be found at http://www.aquacleanpro.org:3000/.
+
+### Model Design
+
+<p align="center">
+    <img src="docs/_static/model.gif" alt="Logo" width="400">
+</p>
