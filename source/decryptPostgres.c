@@ -21,17 +21,9 @@ PG_FUNCTION_INFO_V1(decryptBuffer);
 Datum
 decryptBuffer(PG_FUNCTION_ARGS)
 {
-    // Get trigger context
-    TriggerData *trigdata = (TriggerData *) fcinfo->context;
-    HeapTuple   tuple;
-    HeapTuple   rettuple;
-
-    //Make sure that the function is called from a trigger
-    if (!CALLED_AS_TRIGGER(fcinfo))
-        elog(ERROR, "are you sure you are calling from trigger manager?");
-
-    // Connect to server
-    SPI_connect();
+    // Grab the argument
+    char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
+    int len = strlen(buf);
 
     // Set up key and iv
     unsigned char fileBuffer[256];
@@ -57,20 +49,9 @@ decryptBuffer(PG_FUNCTION_ARGS)
       iv[d++] = (unsigned char)c;
     }
 
-    char* buf;
-    // Triggered by INSERT event
-    if (TRIGGER_FIRED_BY_INSERT(trigdata->tg_event))
-    {
-        // Grab the argument
-        HeapTupleHeader t = PG_GETARG_HEAPTUPLEHEADER(0);
-        bool isnull;
-        Datum type = GetAttributeByName(t, "type", &isnull);
-        buf = VARDATA(DatumGetVarCharPP(type));
-        int len = VARSIZE(DatumGetVarCharPP(type)) - VARHDRSZ;
-        // Set up the context and decrypt
-        AES_init_ctx_iv(&ctx, key, iv);
-        AES_CBC_decrypt_buffer(&ctx, buf, len);
-    }
+    // Set up the context and decrypt
+    AES_init_ctx_iv(&ctx, key, iv);
+    AES_CBC_decrypt_buffer(&ctx, buf, len);
 
     // Close server connection
     SPI_finish();
