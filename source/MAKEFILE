@@ -1,8 +1,10 @@
 # Run this in the 'source' directory
-MODULES = decryptPostgres
-OBJS = decryptPostgres.c	aes.c
-EXTENSION = decryptPostgres
-DATA = decryptPostgres--1.0.sql
+EXTENSION 		= decryptPostgres
+MODULE_big 		= $(EXTENSION)
+OBJS 			= decryptPostgres.c		aes.c
+DATA 			= decryptPostgres--1.0.sql
+REGRESS 		= decryptPostgres_test
+PG_CFLAGS		= -I/usr/include/postgresql/16/server/
 
 PG_CONFIG = pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)
