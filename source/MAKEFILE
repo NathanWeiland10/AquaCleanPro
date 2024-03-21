@@ -1,6 +1,6 @@
 # Run this in the 'source' directory
-MODULE_big = decryptPostgres
-OBJECTS := decryptPostgres.c	aes.c
+MODULES = decryptPostgres
+OBJS = decryptPostgres.c	aes.c
 EXTENSION = decryptPostgres
 DATA = decryptPostgres--1.0.sql
 

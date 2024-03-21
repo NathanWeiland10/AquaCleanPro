@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <postgres.h>
-#include <commands/trigger.h>
 #include <fmgr.h>
 #include <catalog/pg_type.h>
 #include <utils/builtins.h>
+
 #include "aes.h"
 
 #define AES128 1
