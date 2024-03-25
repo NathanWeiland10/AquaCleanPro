@@ -5,6 +5,8 @@
 #include <fmgr.h>
 #include <catalog/pg_type.h>
 #include <utils/builtins.h>
+#include <utils/geo_decls.h>
+#include <varatt.h>
 
 #include "aes.h"
 
