@@ -3,7 +3,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: admin
+      POSTGRES_USER: aquacleanpro
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -23,14 +23,14 @@ services:
     image: postgrest/postgrest
     restart: always
     environment:
-      PGRST_DB_URI: postgres://admin:${$POSTGRES_PASSWORD}@192.168.1.100:5432
+      PGRST_DB_URI: postgres://aquacleanpro:${$POSTGRES_PASSWORD}@192.168.1.100:5432/postgres
+      PGRST_DB_ANON_ROLE: web_anon
     ports:
       - 3000:3000
 
   grafana:
     image: grafana/grafana-oss
     restart: always
-    environment:
     volumes:
       - grafana-storage:/var/lib/grafana
     ports:
