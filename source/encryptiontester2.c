@@ -10,6 +10,10 @@
 // Run this command to compile: gcc tinyaes/aes.c encryptiontester2.c -lstdc++ -o encryptiontester
 // Run the above in the source directory
 
+/*
+* Runs the encryption part of the process, similar to how that case would run on the ardunio hardware
+*/
+
 int main()
 {
     struct AES_ctx ctx;

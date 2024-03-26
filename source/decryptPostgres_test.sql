@@ -1,2 +1,0 @@
-CREATE EXTENSION decryptPostgres;
-SELECT decryptPostgres("9e3d002bf0d9c4c1704ab1cc7caf09594eeafeacfddc25ea5953e34b6ef0ad495ea7b854ea10ff6256c94720c97f44dd094f05f7d2c7313ed8cfcb9fabf97702"::CHAR[])

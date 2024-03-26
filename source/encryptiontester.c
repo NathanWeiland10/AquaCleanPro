@@ -10,6 +10,14 @@
 // Run this command to compile: gcc tinyaes/aes.c encryptiontester.c -lstdc++ -o encryptiontester
 // Run the above in the source directory
 
+/*
+* Run the full encrypt/decrypt pipeline.
+* 1. Create an aes-compatible buffer (length divisible by 16)
+* 2. Encrypt the buffer
+* 3. Print out the encrypted buffer to confirm encryption
+* 4. Decrypt the buffer
+*/
+
 int main()
 {
     struct AES_ctx ctx;
