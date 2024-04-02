@@ -26,6 +26,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
     // Grab the argument
     char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
     int len = strlen(buf);
+    elog(NOTICE, "Encrypted buffer: %s", buf);
 
     // Set up key and iv
     unsigned char fileBuffer[256];
@@ -50,15 +51,15 @@ decryptBuffer(PG_FUNCTION_ARGS)
       int c = strtoul(hex, NULL, 16);
       iv[d++] = (unsigned char)c;
     }
+    elog(NOTICE, "Key and IV set up");
 
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
     AES_CBC_decrypt_buffer(&ctx, buf, len);
+    elog(NOTICE, "Decrypted buffer: %s", buf);
 
     // Close server connection
     SPI_finish();
     // Return the unencrypted buffer to Postgres
     PG_RETURN_VARCHAR_P((VarChar *)buf);
-    // Can insert this buffer into water_data from SQL
-    // If that fails we can look into bringing in a HTTP library and post it that way
 }
