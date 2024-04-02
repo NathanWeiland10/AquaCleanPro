@@ -1,0 +1,18 @@
+# Week 12
+## Tuesday, April 2nd, 2024
+### Time
+- 8:00am - 9:20am
+### Attendees/Role
+- Nathan
+- Ethan T
+- Ethan H
+- Nermeen
+- Thomas
+### Decisions Made
+- Ethan T began sanding down the design to ensure a better fit among the different pieces.
+- Ethan T, Nermeen, and Nathan also started constructing the whole craft by putting together all the sealed pieces.
+- Nermeen and Nathan started assembling the electrical components in the waterproof box to get wires through.
+    - ![Together](img/assembled.jpg)
+- Ethan H is running into issues with the decryption pipeline, currently attemping some fixes to locate where the issue is and fix it before testing next week.
+### Questions or Concerns
+- ...
