@@ -13,6 +13,7 @@
 - Ethan T, Nermeen, and Nathan also started constructing the whole craft by putting together all the sealed pieces.
 - Nermeen and Nathan started assembling the electrical components in the waterproof box to get wires through.
     - ![Together](img/assembled.jpg)
-- Ethan H is running into issues with the decryption pipeline, currently attemping some fixes to locate where the issue is and fix it before testing next week.
+- Ethan H is running into issues with the decryption pipeline, currently attempting some fixes to locate where the issue is and fix it before testing next week.
 ### Questions or Concerns
-- ...
+- From discussing with another group, renting the pool for testing can cost up to $20 an hour
+    - To do this, we will also need to fill out a form, which can be found [here](https://www.wright.edu/sites/www.wright.edu/files/page/attachments/facility-request-form_0.pdf)
