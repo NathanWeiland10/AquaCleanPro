@@ -11,6 +11,7 @@
 ### Decisions Made
 - Ethan T began sanding down the design to ensure a better fit among the different pieces.
 - Ethan T, Nermeen, and Nathan also started constructing the whole craft by putting together all the sealed pieces.
+- Thomas, Nathan, and Ethan T started sealing up the holes in the craft with the sealant and stuck the various parts of the print together to make the final craft.
 - Nermeen and Nathan started assembling the electrical components in the waterproof box to get wires through.
     - ![Together](img/assembled.jpg)
 - Ethan H is running into issues with the decryption pipeline, currently attemping some fixes to locate where the issue is and fix it before testing next week.
