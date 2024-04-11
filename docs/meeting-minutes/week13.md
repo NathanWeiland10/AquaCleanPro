@@ -1,0 +1,35 @@
+# Week 13
+## Thursday, April 11th, 2024
+### Time
+- 8:00am - 9:20am
+### Attendees/Role
+- Nathan
+- Ethan T
+- Ethan H
+- Nermeen
+- Thomas
+### Decisions Made
+- Ethan T sent an email to our Advisor (Buck) about presenting on Thursday April 25th at either 8:30am or 9:30am
+- Ethan T and Nathan drilled hole in water-proof box to allow pH sensor wire to fit
+- Nermeen ordered motor shaft adapters to attach our propellers
+    - Issues could arise if we were to directly attach our propellers to the motor shaft since the adhesive could stick to the back of the motor
+- Ethan T, Nathan, and Thomas applied more water-proof sealant to the edges of the craft
+- Ethan H worked on PostgREST to fix our encrypted buffer table
+- Clips were added to the front of the craft to hold our net in place
+    - ![Net](img/net.png)
+### Questions or Concerns
+- N/A
+
+## Thursday, April 12th, 2024
+### Time
+- 8:00am - 9:20am
+### Attendees/Role
+- Nathan
+- Ethan T
+- Ethan H
+- Nermeen
+- Thomas
+### Decisions Made
+- ...
+### Questions or Concerns
+- ...
