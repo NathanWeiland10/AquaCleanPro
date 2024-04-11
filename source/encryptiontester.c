@@ -7,13 +7,13 @@
 
 #define AES128 1
 
-// Run this command to compile: gcc tinyaes/aes.c encryptiontester.c -lstdc++ -o encryptiontester
+// Run this command to compile: gcc encryptiontester.c -o encryptiontester --include aes.c
 // Run the above in the source directory
 
 int main()
 {
     struct AES_ctx ctx;
-    unsigned char testData[] = "[{\"time\":\"2024-01-18T13:35:36.742489\",\"temp\":100.00,\"ph\":7.0}]";
+    unsigned char testData[] = "[{\"temp\": 50.0, \"ph\": 7.0, \"battery\": 100.0}]";
     // Create padded string divisible by 16
     size_t paddedLength = strlen(testData) + 16 - (strlen(testData) % 16);
     unsigned char paddedData[paddedLength];
