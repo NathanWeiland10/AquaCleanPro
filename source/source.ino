@@ -5,14 +5,14 @@
 #include "motor.hpp"
 #include "steering-system.hpp"
 
-#define TEMP_PIN 1
-#define PH_PIN 2
-#define DIST_RX_PIN 3
-#define DIST_TX_PIN 4
-#define LEFT_MOTOR_E_PIN 5
-#define LEFT_MOTOR_M_PIN 6
-#define RIGHT_MOTOR_E_PIN 5
-#define RIGHT_MOTOR_M_PIN 6
+#define TEMP_PIN 27
+#define PH_PIN 26
+#define DIST_RX_PIN 14
+#define DIST_TX_PIN 13
+#define LEFT_MOTOR_E_PIN 17
+#define LEFT_MOTOR_M_PIN 16
+#define RIGHT_MOTOR_E_PIN 32
+#define RIGHT_MOTOR_M_PIN 33
 #define POSTGREST_URL "http://aquacleanpro.org:3000/water_data"
 #define TURN_WITHIN_DISTANCE 30
 
@@ -103,11 +103,19 @@ int uploadMeasurements(){
     float temp = tempSensor.getValue();
     float ph = phSensor.getValue();
 
+    Serial.print('Temp: ');
+    Serial.println(tempSensor.getValue());
+
+    Serial.print('pH: ');
+    Serial.println(phSensor.getValue());
+
     return httpUpload(temp, ph);
 }
 
 /// @brief Detects walls and steers the craft around them
 void steer(){
+    Serial.print('Distance: ');
+    Serial.println(distSensor.getValue());
     if (distSensor.getValue() < TURN_WITHIN_DISTANCE)
     {
         steeringSystem.turnRight();
