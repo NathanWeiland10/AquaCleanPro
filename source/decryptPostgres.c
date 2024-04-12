@@ -24,13 +24,13 @@ Datum
 decryptBuffer(PG_FUNCTION_ARGS)
 {
     // Grab the argument
-    char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
+    unsigned char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
     int len = strlen(buf);
     elog(NOTICE, "Encrypted buffer: %s", buf);
     elog(NOTICE, "Buffer size: %d", len);
 
     // Set up key and iv
-    unsigned char fileBuffer[256];
+    unsigned char fileBuffer[257];
     unsigned char key[128];
     unsigned char iv[128];
     strcpy(fileBuffer, hexKey);
@@ -42,7 +42,6 @@ decryptBuffer(PG_FUNCTION_ARGS)
        int c = strtoul(hex, NULL, 16);
        key[d++] = (unsigned char)c;
     }
-    elog(NOTICE, "Key length: %d", strlen(key));
     // IV
     strcpy(fileBuffer, hexIv);
     d = 0;
@@ -53,8 +52,6 @@ decryptBuffer(PG_FUNCTION_ARGS)
       int c = strtoul(hex, NULL, 16);
       iv[d++] = (unsigned char)c;
     }
-    elog(NOTICE, "IV length: %d", strlen(iv))
-
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
     AES_CBC_decrypt_buffer(&ctx, buf, len);
