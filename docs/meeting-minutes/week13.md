@@ -30,6 +30,12 @@
 - Nermeen
 - Thomas
 ### Decisions Made
-- ...
+- Big work day:
+    - Some tests for the battery were completed as well as tests for fitting together our components (See videos)
+    - Ethan H continued work on the postgREST side
+    - Nathan, Nermeen, and Ethan T Found bits that we can glue the propellers / motor to and still turn
+    - Nermeen will be taking home the motors / propellers to test other bits incase they work better
+    - We tested the bot in a utility sink for leaks and waterproofness. It passed the buoyancy test but it failed the leak test.
+    - We then separately tested the electronics
 ### Questions or Concerns
 - ...
