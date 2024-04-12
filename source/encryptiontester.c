@@ -13,7 +13,7 @@
 int main()
 {
     struct AES_ctx ctx;
-    unsigned char testData[] = "[{\"temp\": 50.0, \"ph\": 7.0, \"battery\": 100.0}]";
+    unsigned char testData[] = "{\"temp\": 50.0, \"ph\": 7.0}";
     // Create padded string divisible by 16
     size_t paddedLength = strlen(testData) + 16 - (strlen(testData) % 16);
     unsigned char paddedData[paddedLength];

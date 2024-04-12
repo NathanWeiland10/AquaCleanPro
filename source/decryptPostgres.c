@@ -27,6 +27,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
     char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
     int len = strlen(buf);
     elog(NOTICE, "Encrypted buffer: %s", buf);
+    elog(NOTICE, "Buffer size: %d", len);
 
     // Set up key and iv
     unsigned char fileBuffer[256];
@@ -41,6 +42,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
        int c = strtoul(hex, NULL, 16);
        key[d++] = (unsigned char)c;
     }
+    elog(NOTICE, "Key length: %d", strlen(key));
     // IV
     strcpy(fileBuffer, hexIv);
     d = 0;
@@ -51,7 +53,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
       int c = strtoul(hex, NULL, 16);
       iv[d++] = (unsigned char)c;
     }
-    elog(NOTICE, "Key and IV set up");
+    elog(NOTICE, "IV length: %d", strlen(iv))
 
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
