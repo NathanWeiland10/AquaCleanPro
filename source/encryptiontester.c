@@ -7,7 +7,7 @@
 
 #define AES128 1
 
-// Run this command to compile: gcc encryptiontester.c -o encryptiontester --include aes.c
+// Run this command to compile: gcc encryptiontester.c -o encryptiontester.o --include aes.c
 // Run the above in the source directory
 
 int main()
@@ -44,8 +44,8 @@ int main()
     printf("\n Key Generated: \n");
     for(int i = 0; i < sizeof(key); i++)
     {
-        key[i] = rand() % 128;
-        iv[i] = rand() % 128;
+        key[i] = (rand()%(122-33))+33; // From ! to z
+        iv[i] = (rand()%(122-33))+33;
         printf("%c", key[i]);
     }
     printf("\n IV Generated: \n");
@@ -107,8 +107,6 @@ int main()
         fprintf(fptr, "%.2x", paddedData[i]);
     }
     fclose(fptr);
-    printf('\n');
-
     return 0;
 }
 

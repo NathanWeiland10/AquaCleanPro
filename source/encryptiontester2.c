@@ -7,7 +7,7 @@
 
 #define AES128 1
 
-// Run this command to compile: gcc tinyaes/aes.c encryptiontester2.c -lstdc++ -o encryptiontester
+// Run this command to compile: gcc encryptiontester2.c -o encryptiontester.o --include aes.c
 // Run the above in the source directory
 
 int main()
