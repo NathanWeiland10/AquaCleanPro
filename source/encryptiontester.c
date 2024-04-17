@@ -38,8 +38,8 @@ int main()
     fflush(stdout);
 
     // Generate a key
-    unsigned char key[128];
-    unsigned char iv[128];
+    unsigned char key[16];
+    unsigned char iv[16];
     srand(time(NULL));
     printf("\n Key Generated: \n");
     for(int i = 0; i < sizeof(key); i++)
