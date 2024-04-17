@@ -30,41 +30,39 @@ int main()
         }
     }
     // Print status of buffer before encryption
-    printf("Length of buffer: %d\n", strlen(paddedData));
-    printf("Is the string divisible by 16? %d\n", strlen(paddedData) % 16 == 0);
-    // assert(strlen(paddedData) % 16 == 0);
-    printf("\n Raw buffer\n");
-    printf("%s", paddedData);
-    fflush(stdout);
+    
+    printf("Raw buffer: %s\n", paddedData);
 
     // Generate a key
     unsigned char key[16];
     unsigned char iv[16];
     srand(time(NULL));
-    printf("\n Key Generated: \n");
-    for(int i = 0; i < sizeof(key); i++)
+    printf("Key Generated: ");
+    for(int i = 0; i < 16; i++)
     {
         key[i] = (rand()%(122-33))+33; // From ! to z
         iv[i] = (rand()%(122-33))+33;
         printf("%c", key[i]);
+
     }
-    printf("\n IV Generated: \n");
-    for(int x = 0; x < sizeof(iv); x++)
+    printf("\n");
+    printf("IV Generated: ");
+        for(int x = 0; x < sizeof(iv); x++)
     {
         printf("%c", iv[x]);
     }
-    fflush(stdout);
+    printf("\n");
 
     // Encrypt data (print hex)
     AES_init_ctx(&ctx, key);
     AES_ctx_set_iv(&ctx, iv);
     AES_CBC_encrypt_buffer(&ctx, paddedData, paddedLength);
-    printf("\nEncrypted buffer\n");
-    for(int i = 0; i < paddedLength; i++)
+    printf("Encrypted buffer: ");
+    for (int i = 0; i < paddedLength; i++)
     {
         printf("%c", paddedData[i]);
     }
-    fflush(stdout);
+    printf("\n");
 
     // Print the encrypted buffer to a file
     FILE* fptr = fopen("buffer.txt", "w");
@@ -72,10 +70,11 @@ int main()
     {
         fprintf(fptr, "%.2x", paddedData[i]);
     }
+    printf("\n");
     fclose(fptr);
 
     // Try decrypting
-    printf("\nDecrypted buffer\n");
+    printf("Decrypted buffer\n");
     AES_init_ctx(&ctx, key);
     AES_ctx_set_iv(&ctx, iv);
     AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
@@ -83,6 +82,7 @@ int main()
     {
         printf("%c", paddedData[i]);
     }
+    printf("\n");
     fflush(stdout);
 
     // Print stuff out (hex)
