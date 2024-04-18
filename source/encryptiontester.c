@@ -70,11 +70,10 @@ int main()
     {
         fprintf(fptr, "%.2x", paddedData[i]);
     }
-    printf("\n");
     fclose(fptr);
 
     // Try decrypting
-    printf("Decrypted buffer\n");
+    printf("Decrypted buffer: ");
     AES_init_ctx(&ctx, key);
     AES_ctx_set_iv(&ctx, iv);
     AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
