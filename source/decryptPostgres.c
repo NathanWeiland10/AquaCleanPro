@@ -31,7 +31,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
 
     // Buffer back to char
     unsigned char fileBuffer[257];
-    uint8_t buffer [len / 2];
+    uint8_t* buffer = malloc((len / 2) * sizeof(uint8_t));
     strcpy(fileBuffer, buf);
     printf("Encrypted buffer: %s\n", fileBuffer);
     int d = 0;
