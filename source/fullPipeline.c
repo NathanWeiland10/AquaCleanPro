@@ -16,8 +16,8 @@ unsigned char* hexIv = "4f4054635948416f2e5e2e3471336930";
 int main()
 {
     unsigned char fileBuffer[257];
-    unsigned char key[128];
-    unsigned char iv[128];
+    unsigned char key[16];
+    unsigned char iv[16];
 
     unsigned char testData[] = "{\"temp\": 50.0, \"ph\": 7.0}";
     // Create padded string divisible by 16
@@ -26,7 +26,7 @@ int main()
     // Copy data to paddedData, but add padding at the end
     for(int i = 0; i < paddedLength; i++)
     {
-        if (i < strlen(testData))
+        if (i < (int) strlen(testData))
         {
             paddedData[i] = testData[i];
         }
@@ -39,7 +39,7 @@ int main()
     // Key
     strcpy(fileBuffer, hexKey);
     int d = 0;
-    for(int i = 0; i < 257; i+=2)
+    for(int i = 0; i < strlen(hexKey); i+=2)
     {
        char hex[2];
        sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
@@ -51,7 +51,7 @@ int main()
     // IV
     strcpy(fileBuffer, hexIv);
     d = 0;
-    for(int i = 0; i < 257; i+=2)
+    for(int i = 0; i < strlen(hexIv); i+=2)
     {
       char hex[2];
       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
@@ -69,18 +69,22 @@ int main()
     printf("Encrypted buffer: ");
     for (int i = 0; i < paddedLength; i++)
     {
-        printf("%c", paddedData[i]);
+        printf("%u ", paddedData[i]);
     }
     printf("\n");
+    printf("Encrypted ASCII buffer: %s\n", paddedData);
+    printf("Encrypted ASCII buffer size: %zu\n", strlen(paddedData));
+
+    // Print buffer
+    FILE* fptr = fopen("buffer.txt", "w");
+    for(int i = 0; i < sizeof(paddedData); i++)
+    {
+        fprintf(fptr, "%.2x", paddedData[i]);
+    }
+    fclose(fptr);
 
     // Decrypt
-    printf("Decrypted buffer: ");
-    AES_init_ctx(&ctx, key);
-    AES_ctx_set_iv(&ctx, iv);
+    AES_init_ctx_iv(&ctx, key, iv);
     AES_CBC_decrypt_buffer(&ctx, paddedData, paddedLength);
-    for(int i = 0; i < paddedLength; i++)
-    {
-        printf("%c", paddedData[i]);
-    }
-    printf("\n");
+    printf("Decrypted buffer: %s\n", paddedData);
 }
