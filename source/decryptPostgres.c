@@ -47,7 +47,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
     unsigned char key[16];
     unsigned char iv[16];
     strcpy(fileBuffer, hexKey);
-    int d = 0;
+    d = 0;
     for(int i = 0; i < 32; i+=2)
     {
        char hex[2];
