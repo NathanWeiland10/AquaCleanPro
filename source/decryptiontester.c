@@ -49,7 +49,7 @@ int main()
     // Key
     strcpy(fileBuffer, hexKey);
     d = 0;
-    for(int i = 0; i < strlen(hexKey); i+=2)
+    for(int i = 0; i < 32; i+=2)
     {
        char hex[2];
        sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
@@ -61,7 +61,7 @@ int main()
     // IV
     strcpy(fileBuffer, hexIv);
     d = 0;
-    for(int i = 0; i < strlen(hexIv); i+=2)
+    for(int i = 0; i < 32; i+=2)
     {
       char hex[2];
       sprintf(&hex, "%c%c", fileBuffer[i], fileBuffer[i+1]);
