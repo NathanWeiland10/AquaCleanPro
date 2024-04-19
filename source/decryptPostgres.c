@@ -67,11 +67,12 @@ decryptBuffer(PG_FUNCTION_ARGS)
     }
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
-    AES_CBC_decrypt_buffer(&ctx, buf, len / 2);
-    elog(NOTICE, "Decrypted buffer: %s", buf);
+    AES_CBC_decrypt_buffer(&ctx, buffer, len / 2);
+    elog(NOTICE, "Decrypted buffer: %s", buffer);
 
     // Close server connection
     SPI_finish();
     // Return the unencrypted buffer to Postgres
-    PG_RETURN_VARCHAR_P((VarChar *)buf);
+    PG_RETURN_VARCHAR_P((VarChar *)buffer);
+    free(buffer);
 }

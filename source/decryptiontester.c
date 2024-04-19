@@ -22,12 +22,13 @@ int main()
     // Grab the argument
     unsigned char* buf = "574e8c8096475481db35f35c60d72146a073de47039b130640d2372eb45cbe33";
     int len = strlen(buf);
+    printf("Buffer length: %d\n", len);
 
     // Set up key and iv
     unsigned char fileBuffer[257];
     unsigned char key[16];
     unsigned char iv[16];
-    uint8_t buffer[len / 2];
+    uint8_t* buffer = malloc((len / 2) * sizeof(uint8_t));
 
     strcpy(fileBuffer, buf);
     printf("Hex Encrypted buffer: %s\n", fileBuffer);
@@ -40,7 +41,6 @@ int main()
       buffer[d++] = (uint8_t)c;
     }
     // Make sure this matches what we expect
-    assert(sizeof(buffer) / sizeof(buffer[0]) == sizeof(encryptedVals) / sizeof(encryptedVals[0]));
     for(int i = 0; i < len / 2; i++)
     {
       assert(buffer[i] == encryptedVals[i]);
@@ -76,10 +76,9 @@ int main()
     printf("Decrypted buffer: %s\n", buffer);
 
     // Assertions to make sure we did everything right
-    assert(sizeof(buffer) / sizeof(buffer[0]) == (sizeof(decryptedVals) / sizeof(decryptedVals[0])) - 1);
-    // Create int array for buffer
-    for (int i = 0; i < sizeof(buffer) / sizeof(buffer[0]); i++)
+    for (int i = 0; i < strlen(buffer); i++)
     {
       assert(buffer[i] == decryptedVals[i]);
     }
+    free(buffer);
 }
