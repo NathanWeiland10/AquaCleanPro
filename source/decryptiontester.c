@@ -41,6 +41,7 @@ int main()
     }
     printf("Encrypted ASCII buffer: %s\n", buffer);
     // Make sure this matches what we expect
+    assert(sizeof(buffer) / sizeof(buffer[0]) == sizeof(encryptedVals) / sizeof(encryptedVals[0]));
     for(int i = 0; i < len / 2; i++)
     {
       assert(buffer[i] == encryptedVals[i]);
@@ -77,12 +78,10 @@ int main()
     printf("\n");
 
     // Assertions to make sure we did everything right
-    assert(strlen(buffer) == sizeof(final) / sizeof(final[0]));
+    assert(sizeof(buffer) / sizeof(buffer[0]) == (sizeof(final) / sizeof(final[0])) - 1);
     // Create int array for buffer
-    uint8_t bufFinal[len / 2];
-    for (int i = 0; i < strlen(buffer); i++)
+    for (int i = 0; i < sizeof(buffer) / sizeof(buffer[0]); i++)
     {
-      sprintf(bufFinal[i], "%d", buffer[i]);
-      assert(bufFinal[i] == final[i]);
+      assert(buffer[i] == final[i]);
     }
 }
