@@ -11,8 +11,8 @@ struct AES_ctx ctx;
 unsigned char* hexKey = "2279494b693e50722c705e4b57792f42";
 unsigned char* hexIv = "4f4054635948416f2e5e2e3471336930";
 
-uint8_t final[] = {123, 34, 116, 101, 109, 112, 34, 58, 32, 53, 48, 46, 48, 44, 32, 34, 112, 104, 34, 58, 32, 55, 46, 48, 125, 7, 7, 7, 7, 7, 7, 7, 32};
 uint8_t encryptedVals[] = {87, 78, 140, 128, 150, 71, 84, 129, 219, 53, 243, 92, 96, 215, 33, 70, 160, 115, 222, 71, 3, 155, 19, 6, 64, 210, 55, 46, 180, 92, 190, 51};
+uint8_t decryptedVals[] = {123, 34, 116, 101, 109, 112, 34, 58, 32, 53, 48, 46, 48, 44, 32, 34, 112, 104, 34, 58, 32, 55, 46, 48, 125, 7, 7, 7, 7, 7, 7, 7, 32};
 
 // Run this command to compile: gcc decryptiontester.c -o decryptiontester.o --include aes.c
 // Run the above in the source directory
@@ -39,13 +39,13 @@ int main()
       int c = strtoul(hex, NULL, 16);
       buffer[d++] = (uint8_t)c;
     }
-    printf("Encrypted ASCII buffer: %s\n", buffer);
     // Make sure this matches what we expect
     assert(sizeof(buffer) / sizeof(buffer[0]) == sizeof(encryptedVals) / sizeof(encryptedVals[0]));
     for(int i = 0; i < len / 2; i++)
     {
       assert(buffer[i] == encryptedVals[i]);
     }
+
     // Key
     strcpy(fileBuffer, hexKey);
     d = 0;
@@ -57,7 +57,7 @@ int main()
        key[d++] = (unsigned char)c;
     }
     printf("Key: %s\n", key);
-    fflush(stdout);
+    
     // IV
     strcpy(fileBuffer, hexIv);
     d = 0;
@@ -74,14 +74,12 @@ int main()
     AES_init_ctx_iv(&ctx, key, iv);
     AES_CBC_decrypt_buffer(&ctx, buffer, len / 2);
     printf("Decrypted buffer: %s\n", buffer);
-    fflush(stdout);
-    printf("\n");
 
     // Assertions to make sure we did everything right
-    assert(sizeof(buffer) / sizeof(buffer[0]) == (sizeof(final) / sizeof(final[0])) - 1);
+    assert(sizeof(buffer) / sizeof(buffer[0]) == (sizeof(decryptedVals) / sizeof(decryptedVals[0])) - 1);
     // Create int array for buffer
     for (int i = 0; i < sizeof(buffer) / sizeof(buffer[0]); i++)
     {
-      assert(buffer[i] == final[i]);
+      assert(buffer[i] == decryptedVals[i]);
     }
 }
