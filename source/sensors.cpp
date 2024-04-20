@@ -1,5 +1,6 @@
 #include "sensors.hpp"
 #include "Arduino.h"
+#include <SoftwareSerial.h>
 
 #define PH_SLOPE 143.133
 #define PH_OFFSET 526.035

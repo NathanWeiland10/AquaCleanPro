@@ -7,10 +7,10 @@
 
 #define TEMP_PIN 27
 #define PH_PIN 26
-#define DIST_RX_PIN 14
-#define DIST_TX_PIN 13
-#define LEFT_MOTOR_E_PIN 17
-#define LEFT_MOTOR_M_PIN 16
+#define DIST_RX_PIN 13 // 13
+#define DIST_TX_PIN 14 // 14
+#define LEFT_MOTOR_E_PIN 25 // 17
+#define LEFT_MOTOR_M_PIN 26 // 16
 #define RIGHT_MOTOR_E_PIN 32
 #define RIGHT_MOTOR_M_PIN 33
 #define POSTGREST_URL "http://aquacleanpro.org:3000/water_data"
@@ -39,17 +39,25 @@ void IRAM_ATTR onTimer(){
 /// @brief Runs once on start-up. Initializes WiFi, ISR, and Serial connection
 void setup() {
     Serial.begin(115200);
-    initTimer();
-    initWifiPortal();
-    steeringSystem.go();
+    // initTimer();
+    // initWifiPortal();
+    // steeringSystem.go();
 }
 
 /// @brief Main update loop
 void loop() {
-    wifiManager.process();
+
+    steeringSystem.go();
+    delay(1000);
+    steeringSystem.turnLeft();
+    delay(1000);
+    steeringSystem.turnRight();
+    delay(1000);
     
-    uploadMeasurements();
-    steer();
+    // wifiManager.process();
+    
+    // uploadMeasurements();
+    // steer();
 }
 
 /// @brief Initializes the hardware timer used to calculate device runtime.
@@ -86,35 +94,35 @@ void saveParamCallback(){
 
 /// @brief Uploads the temperature and pH data to PostgREST (currently uploads fake data)
 /// @return The HTTP response code
-int httpUpload(float temp, float ph){
-    if (WiFi.status() == WL_CONNECTED) { 
-      HTTPClient http;
-      http.begin(POSTGREST_URL);
-      int httpResponseCode = http.POST("{ \"temp\": " + String(temp) + ", \"ph\": " + String(ph) + " }");
-      http.end();
-      return httpResponseCode;
-    }
-    else return 0;
-}
+// int httpUpload(float temp, float ph){
+//     if (WiFi.status() == WL_CONNECTED) { 
+//       HTTPClient http;
+//       http.begin(POSTGREST_URL);
+//       int httpResponseCode = http.POST("{ \"temp\": " + String(temp) + ", \"ph\": " + String(ph) + " }");
+//       http.end();
+//       return httpResponseCode;
+//     }
+//     else return 0;
+// }
 
 /// @brief Gets and uploads temperature and pH measurements to PostgREST
 /// @return Returns the HTTP response code
-int uploadMeasurements(){
-    float temp = tempSensor.getValue();
-    float ph = phSensor.getValue();
+// int uploadMeasurements(){
+//     float temp = tempSensor.getValue();
+//     float ph = phSensor.getValue();
 
-    Serial.print('Temp: ');
-    Serial.println(tempSensor.getValue());
+//     Serial.print('Temp: ');
+//     Serial.println(tempSensor.getValue());
 
-    Serial.print('pH: ');
-    Serial.println(phSensor.getValue());
+//     Serial.print('pH: ');
+//     Serial.println(phSensor.getValue());
 
-    return httpUpload(temp, ph);
-}
+//     return httpUpload(temp, ph);
+// }
 
 /// @brief Detects walls and steers the craft around them
 void steer(){
-    Serial.print('Distance: ');
+    Serial.print("Distance: ");
     Serial.println(distSensor.getValue());
     if (distSensor.getValue() < TURN_WITHIN_DISTANCE)
     {
