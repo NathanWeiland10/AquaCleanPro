@@ -22,13 +22,12 @@ int main()
     // Grab the argument
     unsigned char* buf = "574e8c8096475481db35f35c60d72146a073de47039b130640d2372eb45cbe33";
     int len = strlen(buf);
-    printf("Buffer length: %d\n", len);
 
     // Set up key and iv
     unsigned char fileBuffer[257];
-    unsigned char key[16];
-    unsigned char iv[16];
-    uint8_t* buffer = malloc((len / 2) * sizeof(uint8_t));
+    unsigned char key[17];
+    unsigned char iv[17];
+    uint8_t buffer[len / 2];
 
     strcpy(fileBuffer, buf);
     printf("Hex Encrypted buffer: %s\n", fileBuffer);
@@ -41,6 +40,7 @@ int main()
       buffer[d++] = (uint8_t)c;
     }
     // Make sure this matches what we expect
+    assert(sizeof(buffer) / sizeof(buffer[0]) == sizeof(encryptedVals) / sizeof(encryptedVals[0]));
     for(int i = 0; i < len / 2; i++)
     {
       assert(buffer[i] == encryptedVals[i]);
@@ -56,6 +56,7 @@ int main()
        int c = strtoul(hex, NULL, 16);
        key[d++] = (unsigned char)c;
     }
+    key[16] = '\0';
     printf("Key: %s\n", key);
     
     // IV
@@ -68,17 +69,19 @@ int main()
       int c = strtoul(hex, NULL, 16);
       iv[d++] = (unsigned char)c;
     }
+    iv[16] = '\0';
     printf("IV: %s\n", iv);
-    fflush(stdout);
+
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
     AES_CBC_decrypt_buffer(&ctx, buffer, len / 2);
     printf("Decrypted buffer: %s\n", buffer);
 
     // Assertions to make sure we did everything right
-    for (int i = 0; i < strlen(buffer); i++)
+    assert(sizeof(buffer) / sizeof(buffer[0]) == (sizeof(decryptedVals) / sizeof(decryptedVals[0])) - 1);
+    // Create int array for buffer
+    for (int i = 0; i < sizeof(buffer) / sizeof(buffer[0]); i++)
     {
       assert(buffer[i] == decryptedVals[i]);
     }
-    free(buffer);
 }
