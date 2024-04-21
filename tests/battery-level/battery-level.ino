@@ -1,8 +1,8 @@
 #include "battery.hpp"
 #include "Arduino.h"
 
-Battery battery(5);
 
+Battery battery();
 void setup(){
     Serial.begin(115200);
 }

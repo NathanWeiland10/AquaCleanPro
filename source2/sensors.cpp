@@ -70,12 +70,14 @@ float TemperatureSensor::sample(){
 /// @param pinNum The pin number connected to the pH sensor
 PHSensor::PHSensor(int pinNum){
     pin = pinNum;
+    pinMode(pin, INPUT);
 }
 
 /// @brief Adds a single sample to the sample array.
 /// @return The value of the sample taken.
 float PHSensor::sample(){
     float sample = ((float) analogRead(pin) - PH_OFFSET) / PH_SLOPE;
+    Serial.println(analogRead(pin));
     sampleArr[index] = sample;
     index = (index == NUM_SAMPLES - 1) ? 0 : index + 1;
     return sample;
@@ -86,6 +88,7 @@ float PHSensor::sample(){
 /// @param tx Transmission pin for serial communication
 DistanceSensor::DistanceSensor(int rx, int tx){
     SoftwareSerial serialComm(rx,tx);
+    serialComm.begin(9600);
 }
 
 /// @brief Gets distance value from DistanceSensor

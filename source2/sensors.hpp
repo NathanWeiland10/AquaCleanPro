@@ -1,6 +1,6 @@
 #include <DS18B20.h>
 #include <SoftwareSerial.h>
-#define NUM_SAMPLES 32
+#define NUM_SAMPLES 8
 
 class Sensor{
     public: 

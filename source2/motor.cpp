@@ -26,11 +26,11 @@ void Motor::stop(){
 /// @brief Turns the motor forward at full speed
 void Motor::turnForward(){
   digitalWrite(pinE, HIGH);
-  digitalWrite(pinM, HIGH);
+  digitalWrite(pinM, LOW);
 }
 
 /// @brief Turns the motor backwards at full speed
 void Motor::turnBackward(){
-  digitalWrite(pinE, HIGH);
-  digitalWrite(pinM, LOW);
+  digitalWrite(pinE, LOW);
+  digitalWrite(pinM, HIGH);
 }
