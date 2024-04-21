@@ -23,7 +23,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
     unsigned char* buf = VARDATA(PG_GETARG_VARCHAR_P(0));
     int len = strlen(buf);
 
-    uint8_t* buffer = malloc((len / 2) * sizeof(uint8_t));
+    uint8_t* buffer = palloc((len / 2) * sizeof(uint8_t));
     unsigned char key[17];
     unsigned char iv[17];
     
@@ -70,6 +70,5 @@ decryptBuffer(PG_FUNCTION_ARGS)
     SPI_finish();
     // Return the unencrypted buffer to Postgres
     PG_RETURN_VARCHAR_P((VarChar *)buffer);
-    // Free malloc'd memory
-    free(buffer);
+    // Postgres automatically free's palloc'd memory
 }
