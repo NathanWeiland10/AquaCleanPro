@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <postgres.h>
+#include <fmgr.h>
 #include <catalog/pg_type_d.h>
+#include <utils/builtins.h>
+#include <utils/geo_decls.h>
+#include <varatt.h>
 
 #include "aes.h"
 
@@ -49,6 +53,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
       key[d++] = (unsigned char)c;
     }
     key[16] = '\0';
+    elog(NOTICE, "Key: %s", key);
 
     // IV
     d = 0;
@@ -60,6 +65,7 @@ decryptBuffer(PG_FUNCTION_ARGS)
       iv[d++] = (unsigned char)c;
     }
     iv[16] = '\0';
+    elog(NOTICE, "IV: %s", iv);
 
     // Set up the context and decrypt
     AES_init_ctx_iv(&ctx, key, iv);
