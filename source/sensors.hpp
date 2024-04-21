@@ -1,3 +1,5 @@
+#pragma once
+
 #define NUM_SAMPLES 8
 
 class PHSensor {

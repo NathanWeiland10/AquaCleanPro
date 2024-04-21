@@ -1,4 +1,6 @@
-#include "ph-sensor.hpp"
+#pragma once
+
+#include "sensors.hpp"
 #include "Arduino.h"
 
 #define PH_SLOPE 143.133
