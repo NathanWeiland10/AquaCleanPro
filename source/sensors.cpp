@@ -3,8 +3,8 @@
 #include "sensors.hpp"
 #include "Arduino.h"
 
-#define PH_SLOPE 143.133
-#define PH_OFFSET 526.035
+#define PH_SLOPE 145.133
+#define PH_OFFSET 855.035
 
 /// @brief Sorts the samples and returns the median value.
 /// @return The median value of the samples taken.
