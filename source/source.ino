@@ -59,16 +59,20 @@ void setup() {
 
 /// @brief Main update loop
 void loop() {
-  //wifiManager.process();
+  wifiManager.process();
 
-  for (int i = 0; i < 8; i++) {
-    phSensor.sample();
+  if (runtime >= totalRuntime) {
+    for (int i = 0; i < 8; i++) {
+      phSensor.sample();
+    }
+
+    uploadMeasurements();
+
+    steer();
   }
-
-  uploadMeasurements();
-
-  steer();
-  delay(1000);
+  else {
+    steeringSystem.stop();
+  }
 }
 
 /// @brief Initializes the hardware timer used to calculate device runtime.
