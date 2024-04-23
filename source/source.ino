@@ -44,7 +44,7 @@ float distance;
 /// @brief Interrupt service routine that increments runtime every second.
 void IRAM_ATTR onTimer() {
   runtime++;
-  //steeringSystem.update();
+  steeringSystem.update();
 }
 
 /// @brief Runs once on start-up. Initializes WiFi, ISR, and Serial connection
@@ -59,38 +59,20 @@ void setup() {
 
 /// @brief Main update loop
 void loop() {
-  leftMotor.turnForward();
-  delay(1000);
-  leftMotor.stop();
-  delay(1000);
-  leftMotor.turnBackward();
-  delay(1000);
-  leftMotor.stop();
-  delay(1000);
+  wifiManager.process();
 
-  rightMotor.turnForward();
-  delay(1000);
-  rightMotor.stop();
-  delay(1000);
-  rightMotor.turnBackward();
-  delay(1000);
-  rightMotor.stop();
-  delay(1000);
+  if (runtime >= totalRuntime) {
+    for (int i = 0; i < 8; i++) {
+      phSensor.sample();
+    }
 
-  // wifiManager.process();
+    uploadMeasurements();
 
-  // if (runtime >= totalRuntime) {
-  //   for (int i = 0; i < 8; i++) {
-  //     phSensor.sample();
-  //   }
-
-  //   uploadMeasurements();
-
-  //   steer();
-  // }
-  // else {
-  //   steeringSystem.stop();
-  // }
+    steer();
+  }
+  else {
+    steeringSystem.stop();
+  }
 }
 
 /// @brief Initializes the hardware timer used to calculate device runtime.
