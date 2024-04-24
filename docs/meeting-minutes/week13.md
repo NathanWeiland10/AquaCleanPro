@@ -20,7 +20,7 @@
 ### Questions or Concerns
 - N/A
 
-## Thursday, April 12th, 2024
+## Friday, April 12th, 2024
 ### Time
 - 8:00am - 1:30pm
 ### Attendees/Role
