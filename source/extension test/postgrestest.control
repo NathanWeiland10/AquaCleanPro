@@ -1,4 +1,0 @@
-comment = 'Something about your extension'
-default_version = '1.0'
-module_pathname = '$libdir/postgrestest'
-relocatable = true

@@ -1,10 +1,9 @@
 #include "sensors.hpp"
 
-PHSensor phSensor(7);
+PHSensor phSensor(26);
 
 void setup() 
 {
-  pinMode(7, INPUT);
   Serial.begin(115200);
 }
 void loop() {

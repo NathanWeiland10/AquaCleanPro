@@ -76,6 +76,10 @@ PHSensor::PHSensor(int pinNum){
 /// @return The value of the sample taken.
 float PHSensor::sample(){
     float sample = ((float) analogRead(pin) - PH_OFFSET) / PH_SLOPE;
+    Serial.print("    pH voltage: ");
+    Serial.println(analogRead(pin));
+    Serial.print("    pH value: ");
+    Serial.println(sample);
     sampleArr[index] = sample;
     index = (index == NUM_SAMPLES - 1) ? 0 : index + 1;
     return sample;

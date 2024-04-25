@@ -1,5 +1,5 @@
 #include "battery.hpp"
-#-.include "Arduino.h"
+#include "Arduino.h"
 
 Battery::Battery(int pinNum, float volt){
     pin = pinNum;
@@ -7,5 +7,5 @@ Battery::Battery(int pinNum, float volt){
 }
 
 float Battery::getCharge(){
-    return analogRead(pinNum) * (5.0 / (4095.0 / (voltage / 5.0)));
+    return (( (float) analogRead(pin) / 4095) * 5) / voltage;
 }
