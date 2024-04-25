@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code &mdash; AquaClean Pro test documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=0d30791a" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=93654010"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Development" href="board.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#assumptions">Assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#constraints">Constraints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="server-config.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="board.html">Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main">Main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#base-sensor-class">Base Sensor Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#temperature-sensor">Temperature Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ph-sensor">pH Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distance-sensor">Distance Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motor">Motor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steering-system">Steering System</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-refs.html">Quick Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-viewer/docs-overview.html">Overview of the AquaClean Pro Document Viewer (ACP-DV)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meeting Minutes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week0.html">Week 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week1.html">Week 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week2.html">Week 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week3.html">Week 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week4.html">Week 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week5.html">Week 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week6.html">Week 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week8.html">Week 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week9.html">Week 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week10.html">Week 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week11.html">Week 11</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week12.html">Week 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week13.html">Week 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week14.html">Week 14</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meeting-minutes/week14.html#id1">Week 14</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AquaClean Pro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code">
+<h1>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h1>
+<section id="main">
+<h2>Main<a class="headerlink" href="#main" title="Link to this heading"></a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TEMP_PIN">
+<span class="target" id="source_8ino_1a00f0342506a37776704c9bf59a4039db"></span><span class="sig-name descname"><span class="n"><span class="pre">TEMP_PIN</span></span></span><a class="headerlink" href="#c.TEMP_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PH_PIN">
+<span class="target" id="source_8ino_1a6bc19f21c74b1e1c16fa828dad13352d"></span><span class="sig-name descname"><span class="n"><span class="pre">PH_PIN</span></span></span><a class="headerlink" href="#c.PH_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DIST_RX_PIN">
+<span class="target" id="source_8ino_1af277398dd6b96385348a47f3821c3da5"></span><span class="sig-name descname"><span class="n"><span class="pre">DIST_RX_PIN</span></span></span><a class="headerlink" href="#c.DIST_RX_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DIST_TX_PIN">
+<span class="target" id="source_8ino_1ab2a2ba587c2197c7c7564b2109b5e21f"></span><span class="sig-name descname"><span class="n"><span class="pre">DIST_TX_PIN</span></span></span><a class="headerlink" href="#c.DIST_TX_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LEFT_MOTOR_E_PIN">
+<span class="target" id="source_8ino_1a639f3fba0984159d73b198050d4108e9"></span><span class="sig-name descname"><span class="n"><span class="pre">LEFT_MOTOR_E_PIN</span></span></span><a class="headerlink" href="#c.LEFT_MOTOR_E_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LEFT_MOTOR_M_PIN">
+<span class="target" id="source_8ino_1a16ac2292838f3a2115c975b1943b231f"></span><span class="sig-name descname"><span class="n"><span class="pre">LEFT_MOTOR_M_PIN</span></span></span><a class="headerlink" href="#c.LEFT_MOTOR_M_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RIGHT_MOTOR_E_PIN">
+<span class="target" id="source_8ino_1a140eeb90b9447985205f61d132365889"></span><span class="sig-name descname"><span class="n"><span class="pre">RIGHT_MOTOR_E_PIN</span></span></span><a class="headerlink" href="#c.RIGHT_MOTOR_E_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RIGHT_MOTOR_M_PIN">
+<span class="target" id="source_8ino_1aee188358c40d4e15fc098f6ce2e45408"></span><span class="sig-name descname"><span class="n"><span class="pre">RIGHT_MOTOR_M_PIN</span></span></span><a class="headerlink" href="#c.RIGHT_MOTOR_M_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSTGREST_URL">
+<span class="target" id="source_8ino_1aaa2319ee1e8b7a1a9090001c486f2ab3"></span><span class="sig-name descname"><span class="n"><span class="pre">POSTGREST_URL</span></span></span><a class="headerlink" href="#c.POSTGREST_URL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TURN_WITHIN_DISTANCE">
+<span class="target" id="source_8ino_1a3733d1292bc79b2f265161914d039ce8"></span><span class="sig-name descname"><span class="n"><span class="pre">TURN_WITHIN_DISTANCE</span></span></span><a class="headerlink" href="#c.TURN_WITHIN_DISTANCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_PIN">
+<span class="target" id="source_8ino_1a5319773dcd45d8609d58007cb4feb863"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_PIN</span></span></span><a class="headerlink" href="#c.BATTERY_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411oneWireTemp8TEMP_PIN">
+<span id="_CPPv311oneWireTemp8TEMP_PIN"></span><span id="_CPPv211oneWireTemp8TEMP_PIN"></span><span id="oneWireTemp__TEMP_PIN"></span><span class="target" id="source_8ino_1a990405ab4ea04b65b4318c3288313853"></span><span class="n"><span class="pre">OneWire</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oneWireTemp</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TEMP_PIN</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411oneWireTemp8TEMP_PIN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino_1afd6dbccd63ecdb9dad7c64b6db4bf599"></span><span class="sig-name descname"><span class="pre">SoftwareSerial</span> <span class="pre">mySerial</span> <span class="pre">(14,</span> <span class="pre">13)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino_1ada06ab1c4bbd307a9fea75726c8894f1"></span><span class="sig-name descname"><span class="pre">void</span> <span class="pre">IRAM_ATTR</span> <span class="pre">onTimer</span> <span class="pre">()</span></span></dt>
+<dd><p>Interrupt service routine that increments runtime every second. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv45setupv">
+<span id="_CPPv35setupv"></span><span id="_CPPv25setupv"></span><span id="setup"></span><span class="target" id="source_8ino_1a4fc01d736fe50cf5b977f755b675f11d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setup</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv45setupv" title="Link to this definition"></a><br /></dt>
+<dd><p>Runs once on start-up. Initializes WiFi, ISR, and Serial connection. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44loopv">
+<span id="_CPPv34loopv"></span><span id="_CPPv24loopv"></span><span id="loop"></span><span class="target" id="source_8ino_1afe461d27b9c48d5921c00d521181f12f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44loopv" title="Link to this definition"></a><br /></dt>
+<dd><p>Main update loop. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49initTimerv">
+<span id="_CPPv39initTimerv"></span><span id="_CPPv29initTimerv"></span><span id="initTimer"></span><span class="target" id="source_8ino_1a5a7931957f8a5298b3982cab604da1ee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initTimer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49initTimerv" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes the hardware timer used to calculate device runtime. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414initWifiPortalv">
+<span id="_CPPv314initWifiPortalv"></span><span id="_CPPv214initWifiPortalv"></span><span id="initWifiPortal"></span><span class="target" id="source_8ino_1a9b6bc0814d7732a78159eba7991932db"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initWifiPortal</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414initWifiPortalv" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes the WiFi portal to obtain network credentials. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417saveParamCallbackv">
+<span id="_CPPv317saveParamCallbackv"></span><span id="_CPPv217saveParamCallbackv"></span><span id="saveParamCallback"></span><span class="target" id="source_8ino_1aeb198256f54c5394b61497892a598fae"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">saveParamCallback</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417saveParamCallbackv" title="Link to this definition"></a><br /></dt>
+<dd><p>Saves runtime setting from WiFi portal to device. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv410httpUploadfff">
+<span id="_CPPv310httpUploadfff"></span><span id="_CPPv210httpUploadfff"></span><span id="httpUpload__float.float.float"></span><span class="target" id="source_8ino_1a60fc5493e80c02a165175ee3abf6b92a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">httpUpload</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">temp</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ph</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">charge</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410httpUploadfff" title="Link to this definition"></a><br /></dt>
+<dd><p>Uploads the temperature and pH data to PostgREST (currently uploads fake data) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The HTTP response code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418uploadMeasurementsv">
+<span id="_CPPv318uploadMeasurementsv"></span><span id="_CPPv218uploadMeasurementsv"></span><span id="uploadMeasurements"></span><span class="target" id="source_8ino_1ac36a0262937ca31cf872b9eef5ec3742"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uploadMeasurements</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418uploadMeasurementsv" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets and uploads temperature and pH measurements to PostgREST. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the HTTP response code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411getDistancev">
+<span id="_CPPv311getDistancev"></span><span id="_CPPv211getDistancev"></span><span id="getDistance"></span><span class="target" id="source_8ino_1a5c185fa137f4802d9574ff866f1d90bd"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDistance</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411getDistancev" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets the distance in cm from the ultrasonic sensor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the distance in cm </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv45steerv">
+<span id="_CPPv35steerv"></span><span id="_CPPv25steerv"></span><span id="steer"></span><span class="target" id="source_8ino_1ab94cdf65831cab90335e52dbee4c6ca0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">steer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv45steerv" title="Link to this definition"></a><br /></dt>
+<dd><p>Detects walls and steers the craft around them. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411wifiManager">
+<span id="_CPPv311wifiManager"></span><span id="_CPPv211wifiManager"></span><span id="wifiManager__WiFiManager"></span><span class="target" id="source_8ino_1a8afdaf6df934dd5aa47343293903c670"></span><span class="n"><span class="pre">WiFiManager</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wifiManager</span></span></span><a class="headerlink" href="#_CPPv411wifiManager" title="Link to this definition"></a><br /></dt>
+<dd><p>WiFi manager instance used to create WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412runtimeParam">
+<span id="_CPPv312runtimeParam"></span><span id="_CPPv212runtimeParam"></span><span id="runtimeParam__WiFiManagerParameter"></span><span class="target" id="source_8ino_1af02ba4a95075daf46d3972a02cd0268e"></span><span class="n"><span class="pre">WiFiManagerParameter</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runtimeParam</span></span></span><a class="headerlink" href="#_CPPv412runtimeParam" title="Link to this definition"></a><br /></dt>
+<dd><p>Device runtime parameter configured in WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412totalRuntime">
+<span id="_CPPv312totalRuntime"></span><span id="_CPPv212totalRuntime"></span><span id="totalRuntime__i"></span><span class="target" id="source_8ino_1a2a72013efce096390c4d1abb296f6754"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">totalRuntime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv412totalRuntime" title="Link to this definition"></a><br /></dt>
+<dd><p>Total time in seconds that the device will run before shutting down. Initialized at -1 until configured from WiFi portal. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv47runtime">
+<span id="_CPPv37runtime"></span><span id="_CPPv27runtime"></span><span id="runtime__i"></span><span class="target" id="source_8ino_1a6885fec41faff728c1e6173cfb69e81f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runtime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv47runtime" title="Link to this definition"></a><br /></dt>
+<dd><p>Time in seconds that the device has been active. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412runtimeTimer">
+<span id="_CPPv312runtimeTimer"></span><span id="_CPPv212runtimeTimer"></span><span id="runtimeTimer__hw_timer_tP"></span><span class="target" id="source_8ino_1a0e2412c4c92e209d6c6ff0799f364e77"></span><span class="n"><span class="pre">hw_timer_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">runtimeTimer</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NULL</span></span><a class="headerlink" href="#_CPPv412runtimeTimer" title="Link to this definition"></a><br /></dt>
+<dd><p>Hardware timer used to increment runtime every second. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino_1aee0cd8db15cae53a466f2f33c7c1015b"></span><span class="sig-name descname"><span class="pre">DallasTemperature</span> <span class="pre">tempSensor</span> <span class="pre">&amp;</span> <span class="pre">oneWireTemp</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="source_8ino_1a2ce749e00504ff6cb58cbabfcc8051ca"></span><span class="sig-name descname"><span class="pre">Battery</span> <span class="pre">battery</span> <span class="pre">(BATTERY_PIN,</span> <span class="pre">3.4)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv48phSensor">
+<span id="_CPPv38phSensor"></span><span id="_CPPv28phSensor"></span><span class="target" id="source_8ino_1a024644266d5d043bf4a2555290a6539b"></span><a class="reference internal" href="#_CPPv48PHSensor" title="PHSensor"><span class="n"><span class="pre">PHSensor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">phSensor</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">PH_PIN</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48phSensor" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv49leftMotor">
+<span id="_CPPv39leftMotor"></span><span id="_CPPv29leftMotor"></span><span class="target" id="source_8ino_1a76f4bc0044b805b214105bb6aad865ee"></span><a class="reference internal" href="#_CPPv45Motor" title="Motor"><span class="n"><span class="pre">Motor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">leftMotor</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">LEFT_MOTOR_E_PIN</span></span>, <span class="n"><span class="pre">LEFT_MOTOR_M_PIN</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49leftMotor" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv410rightMotor">
+<span id="_CPPv310rightMotor"></span><span id="_CPPv210rightMotor"></span><span class="target" id="source_8ino_1ad5275bbb23be363fde65b17ac6e353d0"></span><a class="reference internal" href="#_CPPv45Motor" title="Motor"><span class="n"><span class="pre">Motor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rightMotor</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">RIGHT_MOTOR_E_PIN</span></span>, <span class="n"><span class="pre">RIGHT_MOTOR_M_PIN</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410rightMotor" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv414steeringSystem">
+<span id="_CPPv314steeringSystem"></span><span id="_CPPv214steeringSystem"></span><span class="target" id="source_8ino_1a7fef454450dff37ae64a1f80577f84bd"></span><a class="reference internal" href="#_CPPv414SteeringSystem" title="SteeringSystem"><span class="n"><span class="pre">SteeringSystem</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">steeringSystem</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49leftMotor" title="leftMotor"><span class="n"><span class="pre">leftMotor</span></span></a>, <a class="reference internal" href="#_CPPv410rightMotor" title="rightMotor"><span class="n"><span class="pre">rightMotor</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414steeringSystem" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv44data">
+<span id="_CPPv34data"></span><span id="_CPPv24data"></span><span id="data__unsigned-cA"></span><span class="target" id="source_8ino_1a1313fbf2e999ad021f220cbf61ec9688"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv44data" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv48distance">
+<span id="_CPPv38distance"></span><span id="_CPPv28distance"></span><span id="distance__float"></span><span class="target" id="source_8ino_1a06f14a9abd47b91465f895d5259cdc1b"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">distance</span></span></span><a class="headerlink" href="#_CPPv48distance" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</section>
+<section id="base-sensor-class">
+<h2>Base Sensor Class<a class="headerlink" href="#base-sensor-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “Sensor” in doxygen xml output for project “AquaClean Pro” from directory: ./xml</p>
+</div>
+</section>
+<section id="temperature-sensor">
+<h2>Temperature Sensor<a class="headerlink" href="#temperature-sensor" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “TemperatureSensor” in doxygen xml output for project “AquaClean Pro” from directory: ./xml</p>
+</div>
+</section>
+<section id="ph-sensor">
+<h2>pH Sensor<a class="headerlink" href="#ph-sensor" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv48PHSensor">
+<span id="_CPPv38PHSensor"></span><span id="_CPPv28PHSensor"></span><span id="PHSensor"></span><span class="target" id="classPHSensor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PHSensor</span></span></span><a class="headerlink" href="#_CPPv48PHSensor" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor8PHSensorEi">
+<span id="_CPPv3N8PHSensor8PHSensorEi"></span><span id="_CPPv2N8PHSensor8PHSensorEi"></span><span id="PHSensor::PHSensor__i"></span><span class="target" id="classPHSensor_1a0549db968991cd78c89b83b0b6bb7d9d"></span><span class="sig-name descname"><span class="n"><span class="pre">PHSensor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pin</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor8PHSensorEi" title="Link to this definition"></a><br /></dt>
+<dd><p>Constructor for the pH sensor class. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pinNum</strong> – The pin number connected to the pH sensor </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor6sampleEv">
+<span id="_CPPv3N8PHSensor6sampleEv"></span><span id="_CPPv2N8PHSensor6sampleEv"></span><span id="PHSensor::sample"></span><span class="target" id="classPHSensor_1a8d1659854f388ed53650d547e14b6763"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor6sampleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a single sample to the sample array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the sample taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8PHSensor8getValueEv">
+<span id="_CPPv3N8PHSensor8getValueEv"></span><span id="_CPPv2N8PHSensor8getValueEv"></span><span id="PHSensor::getValue"></span><span class="target" id="classPHSensor_1a732b5fcad551020a354a9fd92c3d0190"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8PHSensor8getValueEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the samples and returns the median value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The median value of the samples taken. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="distance-sensor">
+<h2>Distance Sensor<a class="headerlink" href="#distance-sensor" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “DistanceSensor” in doxygen xml output for project “AquaClean Pro” from directory: ./xml</p>
+</div>
+</section>
+<section id="motor">
+<h2>Motor<a class="headerlink" href="#motor" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv45Motor">
+<span id="_CPPv35Motor"></span><span id="_CPPv25Motor"></span><span id="Motor"></span><span class="target" id="classMotor"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Motor</span></span></span><a class="headerlink" href="#_CPPv45Motor" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Motor5MotorEv">
+<span id="_CPPv3N5Motor5MotorEv"></span><span id="_CPPv2N5Motor5MotorEv"></span><span id="Motor::Motor"></span><span class="target" id="classMotor_1af6106b4c506411265c5face762b6c004"></span><span class="sig-name descname"><span class="n"><span class="pre">Motor</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Motor5MotorEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Default constructor for a motor controlled by the L298N. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Motor5MotorEii">
+<span id="_CPPv3N5Motor5MotorEii"></span><span id="_CPPv2N5Motor5MotorEii"></span><span id="Motor::Motor__i.i"></span><span class="target" id="classMotor_1a47e6be18c8425eb94e08cb99e3232734"></span><span class="sig-name descname"><span class="n"><span class="pre">Motor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinNumE</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinNumM</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Motor5MotorEii" title="Link to this definition"></a><br /></dt>
+<dd><p>Default constructor for a motor controlled by the L298N. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pinNumE</strong> – Pin E of the motor </p></li>
+<li><p><strong>pinNumM</strong> – Pin M of the motor </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Motor4stopEv">
+<span id="_CPPv3N5Motor4stopEv"></span><span id="_CPPv2N5Motor4stopEv"></span><span id="Motor::stop"></span><span class="target" id="classMotor_1a015fd5308d4d27e5dcf7f9ea3d5c03f6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Motor4stopEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Stops the motor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Motor11turnForwardEv">
+<span id="_CPPv3N5Motor11turnForwardEv"></span><span id="_CPPv2N5Motor11turnForwardEv"></span><span id="Motor::turnForward"></span><span class="target" id="classMotor_1ac5a35054a1eacb3b4461734b9f1fd412"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">turnForward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Motor11turnForwardEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Turns the motor forward at full speed. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Motor12turnBackwardEv">
+<span id="_CPPv3N5Motor12turnBackwardEv"></span><span id="_CPPv2N5Motor12turnBackwardEv"></span><span id="Motor::turnBackward"></span><span class="target" id="classMotor_1a4a465cfc0291e1ef12ea592d5aabe90f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">turnBackward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Motor12turnBackwardEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Turns the motor backwards at full speed. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="steering-system">
+<h2>Steering System<a class="headerlink" href="#steering-system" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv414SteeringSystem">
+<span id="_CPPv314SteeringSystem"></span><span id="_CPPv214SteeringSystem"></span><span id="SteeringSystem"></span><span class="target" id="classSteeringSystem"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SteeringSystem</span></span></span><a class="headerlink" href="#_CPPv414SteeringSystem" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem14SteeringSystemE5Motor5Motor">
+<span id="_CPPv3N14SteeringSystem14SteeringSystemE5Motor5Motor"></span><span id="_CPPv2N14SteeringSystem14SteeringSystemE5Motor5Motor"></span><span id="SteeringSystem::SteeringSystem__Motor.Motor"></span><span class="target" id="classSteeringSystem_1ae45dc1ea1e3f76742e183f0a49afb7df"></span><span class="sig-name descname"><span class="n"><span class="pre">SteeringSystem</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45Motor" title="Motor"><span class="n"><span class="pre">Motor</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">left</span></span>, <a class="reference internal" href="#_CPPv45Motor" title="Motor"><span class="n"><span class="pre">Motor</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">right</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem14SteeringSystemE5Motor5Motor" title="Link to this definition"></a><br /></dt>
+<dd><p>Default constructor of the steering system. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left</strong> – Reference to the left motor </p></li>
+<li><p><strong>motor</strong> – Reference to the right motor </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem4stopEv">
+<span id="_CPPv3N14SteeringSystem4stopEv"></span><span id="_CPPv2N14SteeringSystem4stopEv"></span><span id="SteeringSystem::stop"></span><span class="target" id="classSteeringSystem_1a94a237580701f86f0daf8757ce00f70c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem4stopEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Stops the movement of the craft. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem2goEv">
+<span id="_CPPv3N14SteeringSystem2goEv"></span><span id="_CPPv2N14SteeringSystem2goEv"></span><span id="SteeringSystem::go"></span><span class="target" id="classSteeringSystem_1a457fb3761b22c05f18ec12099276b7cc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem2goEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Makes the craft go forward. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem9turnRightEv">
+<span id="_CPPv3N14SteeringSystem9turnRightEv"></span><span id="_CPPv2N14SteeringSystem9turnRightEv"></span><span id="SteeringSystem::turnRight"></span><span class="target" id="classSteeringSystem_1a3a06b3c64e43ae1c8d5668680821a1de"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">turnRight</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem9turnRightEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Turns the craft right. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem8turnLeftEv">
+<span id="_CPPv3N14SteeringSystem8turnLeftEv"></span><span id="_CPPv2N14SteeringSystem8turnLeftEv"></span><span id="SteeringSystem::turnLeft"></span><span class="target" id="classSteeringSystem_1abfb705465dfab27e59b61aa91fb27aa4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">turnLeft</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem8turnLeftEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Turns the craft left. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14SteeringSystem6updateEv">
+<span id="_CPPv3N14SteeringSystem6updateEv"></span><span id="_CPPv2N14SteeringSystem6updateEv"></span><span id="SteeringSystem::update"></span><span class="target" id="classSteeringSystem_1a5aa235aa42a8a3f2b81e41cb2f9060bd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14SteeringSystem6updateEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Updates the steering timer. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="board.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

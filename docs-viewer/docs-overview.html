@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview of the AquaClean Pro Document Viewer (ACP-DV) &mdash; AquaClean Pro test documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/theme.css?v=0d30791a" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=93654010"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Week 0" href="../meeting-minutes/week0.html" />
+    <link rel="prev" title="Quick Links" href="../quick-refs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html#assumptions">Assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html#constraints">Constraints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../server-config.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code.html">Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-refs.html">Quick Links</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview of the AquaClean Pro Document Viewer (ACP-DV)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-files-to-the-acp-dv">Adding Files to the ACP-DV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-about-markdown-files-in-the-acp-dv">Notes About Markdown Files in the ACP-DV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#current-issues-with-the-acp-dv">Current Issues with the ACP-DV</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meeting Minutes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week0.html">Week 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week1.html">Week 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week2.html">Week 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week3.html">Week 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week4.html">Week 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week5.html">Week 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week6.html">Week 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week8.html">Week 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week9.html">Week 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week10.html">Week 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week11.html">Week 11</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week12.html">Week 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week13.html">Week 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week14.html">Week 14</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meeting-minutes/week14.html#id1">Week 14</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AquaClean Pro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview of the AquaClean Pro Document Viewer (ACP-DV)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs-viewer/docs-overview.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview-of-the-aquaclean-pro-document-viewer-acp-dv">
+<h1>Overview of the AquaClean Pro Document Viewer (ACP-DV)<a class="headerlink" href="#overview-of-the-aquaclean-pro-document-viewer-acp-dv" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>The ACP-DV can be found at <a class="reference external" href="https://nathanweiland10.github.io/AquaCleanPro/">https://nathanweiland10.github.io/AquaCleanPro/</a> or under the custom domain <a class="reference external" href="https://docs.aquacleanpro.org/">https://docs.aquacleanpro.org/</a>.</p></li>
+<li><p>The ACP-DV contains source code for the AquaClean Pro, meeting minutes, and other useful links and resources regarding the development and use of the AquaClean Pro.</p></li>
+</ul>
+<section id="adding-files-to-the-acp-dv">
+<h2>Adding Files to the ACP-DV<a class="headerlink" href="#adding-files-to-the-acp-dv" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>To add files to the ACP-DV, follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Create a new GitHub branch from the repo: <a class="reference external" href="https://github.com/NathanWeiland10/AquaCleanPro">https://github.com/NathanWeiland10/AquaCleanPro</a> and create a markdown file. Typically these files should be placed in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory.</p></li>
+<li><p>Under the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory, locate the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file. The file should look like the following:</p>
+<ul>
+<li><p><img alt="index.rst File" src="../_images/rst.png" /></p></li>
+</ul>
+</li>
+<li><p>Either add to an existing <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> or create a new one. Creating a new <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> with a specified caption will create a header in the ACP-DV, as shown in the following for “Documentation”:</p>
+<ul>
+<li><p><img alt="Tree Header" src="../_images/tree-header.png" /></p></li>
+</ul>
+</li>
+<li><p>Add the relative path of the markdown file under the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code>.</p></li>
+<li><p>Upload your branch / push your changes to the <a class="reference external" href="https://github.com/NathanWeiland10/AquaCleanPro">GitHub repo</a>. An automated job should be ran which will allow you to view the ACP-DV before it goes live at https://docs.aquacleanpro.org/. This can be found by clicking on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab, then the changes you pushed. Near the bottom you will find the local version of the ACP-DV. Extract the file and open <code class="docutils literal notranslate"><span class="pre">index.html</span></code>:</p>
+<ul>
+<li><p><img alt="Local View" src="../_images/local-view.png" /></p></li>
+</ul>
+</li>
+<li><p>Push your changes to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch after you have viewed the local version of the ACP-DV and are satisfied with the changes. An automated script will be ran to add your changes to the live ACP-DV, which can be found at https://docs.aquacleanpro.org/.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="notes-about-markdown-files-in-the-acp-dv">
+<h2>Notes About Markdown Files in the ACP-DV<a class="headerlink" href="#notes-about-markdown-files-in-the-acp-dv" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Header levels matter in your markdown files regarding the ACP-DV. A header level of one (i.e., a single hashtag <code class="docutils literal notranslate"><span class="pre">#</span></code>) will act as a header for the name of the file. For example, in the below example, the level one header of the file will be displayed in the viewer (Ex: “Server Configuration”), <strong>not the name of the file itself</strong>:</p>
+<ul>
+<li><p><img alt="Tree Header" src="../_images/tree-header.png" /></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="current-issues-with-the-acp-dv">
+<h2>Current Issues with the ACP-DV<a class="headerlink" href="#current-issues-with-the-acp-dv" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>When changes are pushed to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, the custom domain of <code class="docutils literal notranslate"><span class="pre">docs.aquacleanpro.org</span></code> is reset and manually needs to be updated in the <a class="reference external" href="https://github.com/NathanWeiland10/AquaCleanPro">GitHub repo</a> under Setting -&gt; Pages -&gt; Custom domain:</p>
+<ul>
+<li><p><img alt="Custom Domain" src="../_images/custom-domain.png" /></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quick-refs.html" class="btn btn-neutral float-left" title="Quick Links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../meeting-minutes/week0.html" class="btn btn-neutral float-right" title="Week 0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
